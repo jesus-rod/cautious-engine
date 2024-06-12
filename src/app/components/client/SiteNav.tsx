@@ -10,8 +10,8 @@ const siteRoutes = [
     label: "Upload",
   },
   {
-    href: "/files",
-    label: "Files",
+    href: "/documents",
+    label: "Documents",
   },
 ];
 

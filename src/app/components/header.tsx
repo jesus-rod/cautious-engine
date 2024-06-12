@@ -1,16 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
-import SiteNav from "./client/site-nav";
+import SiteNav from "./client/SiteNav";
 
 export default function Header() {
   return (
     <header className="flex justify-between items-center py-4 px-7 border-b">
       <Link href="/">
         <Image
-          src="https://placehold.jp/3d4070/ffffff/50x50.png?text=SMART"
+          src="https://placehold.jp/3d4070/ffffff/60x60.png?text=TOPICFY"
           alt="logo"
-          width="50"
-          height="50"
+          width="60"
+          height="60"
         />
       </Link>
       <SiteNav />

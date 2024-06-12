@@ -1,0 +1,92 @@
+{
+  "topics": [
+    "Healthy eating",
+    "Nutrients",
+    "Fruits and vegetables",
+    "Whole grains",
+    "Lean proteins",
+    "Healthy fats",
+    "Hydration",
+    "Portion control",
+    "Processed foods",
+    "Meal planning and preparation",
+    "Mindful eating"
+  ],
+  "relationships": [
+    {
+      "topic": "Healthy eating",
+      "related_topics": [
+        "Nutrients",
+        "Fruits and vegetables",
+        "Whole grains",
+        "Lean proteins",
+        "Healthy fats",
+        "Hydration",
+        "Portion control",
+        "Processed foods",
+        "Meal planning and preparation",
+        "Mindful eating"
+      ]
+    },
+    {
+      "topic": "Nutrients",
+      "related_topics": [
+        "Fruits and vegetables",
+        "Whole grains",
+        "Lean proteins",
+        "Healthy fats"
+      ]
+    },
+    {
+      "topic": "Fruits and vegetables",
+      "related_topics": [
+        "Hydration",
+        "Processed foods"
+      ]
+    },
+    {
+      "topic": "Whole grains",
+      "related_topics": [
+        "Lean proteins",
+        "Processed foods"
+      ]
+    },
+    {
+      "topic": "Lean proteins",
+      "related_topics": [
+        "Healthy fats",
+        "Processed foods"
+      ]
+    },
+    {
+      "topic": "Healthy fats",
+      "related_topics": [
+        "Processed foods"
+      ]
+    },
+    {
+      "topic": "Hydration",
+      "related_topics": [
+        "Processed foods"
+      ]
+    },
+    {
+      "topic": "Portion control",
+      "related_topics": [
+        "Mindful eating"
+      ]
+    },
+    {
+      "topic": "Processed foods",
+      "related_topics": [
+        "Meal planning and preparation"
+      ]
+    },
+    {
+      "topic": "Meal planning and preparation",
+      "related_topics": [
+        "Mindful eating"
+      ]
+    }
+  ]
+}
