@@ -12,7 +12,7 @@ const openai = new OpenAI({
 
 const prompt = (fileContents: string) => {
   return `
-  Analyze the following text and summarize the main topics and their relationships. Provide the output as a json containing two arrays, one array containing the topics and the other containing the relationships: 
+  Analyze the following text and summarize the main topics and their relationships. Provide the output as a JSON containing two properties, one named "topics" which contains an array with the topic name and the times it occurred. This property will represent the nodes in a graph. And also another property named "relationships" which will be used as edges in a graph. The edges should be represented as an array where each node contains an object with properties "from" and "to" and also a property "ocurrences" to state how many times that connection ocurred in the text. If the connections occurs in the opposite direction, don't add a new "from" and "to" entry. Instead increase the ocurrences in the existing edge. Consider relationships between different nodes too.
   ${fileContents}
   `;
 }
@@ -26,16 +26,15 @@ async function runLLMAlgorithm(fileContents: string): Promise<{topics: string[],
       }
     ],
     model: process.env['OPENAI_MODEL_B'] ?? 'gpt-3.5-turbo',
-    max_tokens: 1000,
-    temperature: 0.2,
+    max_tokens: 3000,
+    temperature: 0,
   };
 
   try {
     const response: OpenAI.Chat.ChatCompletion = await openai.chat.completions.create(params);
-    const messageContent: string | null = response.choices[0].message.content;
-    console.log('Message content:', messageContent);
+    const messageContent: string | null = response.choices[0].message.content?.trim() ?? "";
+    console.log("this ok?", messageContent)
     const output = JSON.parse(messageContent ?? "");
-    console.log('Parsed Output:', output);
     return output;
   } catch (error) {
     console.error('Error calling OpenAI API:', error);
@@ -49,7 +48,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   if (req.method === 'POST') {
     try {
-      // Retrieve the document
       const file = await prisma.fileMetadata.findUnique({
         where: {id: String(id)},
       });
@@ -61,7 +59,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const fileName = file.filename;
       const uploadDir = path.join(process.cwd(), 'uploads');
       const filePath = path.join(uploadDir, fileName)
-      console.log("filepath to read", filePath);
       const fileContents = fs.readFileSync(filePath, 'utf-8');
 
       // Use the file content as input for the LLM algorithm

@@ -30,7 +30,7 @@ const DocumentsTable: React.FC<DocumentsTableProps> = ({data}) => {
           <tr key={document.id}>
             <td className="px-6 py-4 whitespace-nowrap">{document.filename}</td>
             <td className="px-6 py-4 whitespace-nowrap">{document.filesize} bytes</td>
-            <td className="px-6 py-4 whitespace-nowrap">{new Date(document.uploadDate).toLocaleDateString()}</td>
+            <td className="px-6 py-4 whitespace-nowrap">{new Date(document.uploadDate).toLocaleDateString('de-DE')}</td>
             <td className="px-6 py-4 whitespace-nowrap">
               {!document.analysisResult && <RunModelComponent id={document.id} />}
               {document.analysisResult && <ShowModelComponent id={document.id} />}

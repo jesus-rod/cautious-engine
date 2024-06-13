@@ -16,9 +16,6 @@ async function getData(documentId: string) {
 
 export default async function DocumentDetail({params}: {params: {id: string}}) {
   const {id} = params;
-
-  console.log("DETAIL REQUEST is", id);
-
   const data = await getData(id);
   const analysisResult = data.analysisResult;
   const parsedAnalysisResult = JSON.parse(analysisResult);
@@ -28,9 +25,8 @@ export default async function DocumentDetail({params}: {params: {id: string}}) {
 
   return (
     <main>
-      <h1>Document Detail</h1>
+      <h1 className="text-4xl font-bold p-8"> Graph Visualization </h1>
       <div className="border-black">
-        {/* <div><pre>{JSON.stringify(data, null, 2)}</pre></div> */}
         <GraphVisualization data={parsedAnalysisResult} />
       </div>
     </main>

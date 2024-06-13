@@ -39,7 +39,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       multiples: false,
       uploadDir: uploadDir,
       keepExtensions: true,
-      maxFileSize: 10 * 1024 * 1024, // 10 MB
+      maxFileSize: 2 * 1024 * 1024, // 2 MB ~ 2,097,152 bytes
       allowEmptyFiles: false,
       filter: ({originalFilename, mimetype}) => {
         const allowedExtensions = ['.txt'];

@@ -5,7 +5,6 @@ const prisma = new PrismaClient();
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
   const {id} = req.query;
-  console.log('api DETAIL id:', id);
   if (req.method === 'GET') {
     try {
       const document = await prisma.fileMetadata.findUnique({
