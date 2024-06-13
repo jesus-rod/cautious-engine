@@ -3,14 +3,11 @@
 import {useEffect, useRef} from 'react';
 import {Network} from 'vis-network';
 
-
 const GraphVisualization = ({ data }) => {
   const graphRef = useRef(null);
 
   useEffect(() => {
     const { topics, relationships } = data;
-    console.log("rels", relationships)
-
     const nodes = topics.map(topic => ({
       id: topic.name,
       label: topic.name,
@@ -25,7 +22,6 @@ const GraphVisualization = ({ data }) => {
       }
     }));
 
-    // Create edges with weights based on connections
     let edges = [];
     relationships.forEach(rel => {
       edges.push({
@@ -61,7 +57,6 @@ const GraphVisualization = ({ data }) => {
       },
     };
 
-    console.log("graphData:", graphData)
     const network = new Network(container, graphData, options);
 
     return () => {
@@ -69,7 +64,7 @@ const GraphVisualization = ({ data }) => {
     };
   }, [data]);
 
-  return <div ref={graphRef} style={{ height: '600px' }} />;
+  return <div ref={graphRef} style={{ height: '1000px' }} />;
 };
 
 export default GraphVisualization;

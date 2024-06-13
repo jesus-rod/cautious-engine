@@ -25,7 +25,7 @@ async function runLLMAlgorithm(fileContents: string): Promise<{topics: string[],
         content: prompt(fileContents),
       }
     ],
-    model: process.env['OPENAI_MODEL_B'] ?? 'gpt-3.5-turbo',
+    model: process.env['OPENAI_MODEL'] ?? 'gpt-3.5-turbo',
     max_tokens: 3000,
     temperature: 0,
   };
@@ -33,7 +33,6 @@ async function runLLMAlgorithm(fileContents: string): Promise<{topics: string[],
   try {
     const response: OpenAI.Chat.ChatCompletion = await openai.chat.completions.create(params);
     const messageContent: string | null = response.choices[0].message.content?.trim() ?? "";
-    console.log("this ok?", messageContent)
     const output = JSON.parse(messageContent ?? "");
     return output;
   } catch (error) {
@@ -43,7 +42,6 @@ async function runLLMAlgorithm(fileContents: string): Promise<{topics: string[],
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  console.log("handling process request")
   const {id} = req.query;
 
   if (req.method === 'POST') {
@@ -78,7 +76,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
       res.status(200).json(updatedFile);
     } catch (error) {
-      console.error('Error processing file:', error); // eslint-disable-line no-console
+      console.error('Error processing file:', error);
       res.status(500).json({message: 'Error processing file'});
     }
   } else {

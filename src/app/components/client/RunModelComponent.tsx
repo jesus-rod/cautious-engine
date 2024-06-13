@@ -24,15 +24,12 @@ const RunModelComponent: React.FC<RunModelProps> = ({id}) => {
       });
 
       if (response.ok) {
-        console.log('Modeling completed successfully');
         setDidModelRunSuccessfully(true);
         buttonMessage = 'Show Document';
       } else {
-        // Handle error response
         console.error('Error running topic modeling :(');
       }
     } catch (error) {
-      // Handle fetch error
       console.error('Error running topic modeling:', error);
     }
 

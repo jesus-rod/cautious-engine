@@ -7,7 +7,8 @@ export default function Header() {
     <header className="flex justify-between items-center py-4 px-7 border-b">
       <Link href="/">
         <Image
-          src="https://placehold.jp/3d4070/ffffff/60x60.png?text=TOPICFY"
+          className="rounded"
+          src="https://placehold.jp/444444/ffffff/60x60.png?text=TOPIC!"
           alt="logo"
           width="60"
           height="60"

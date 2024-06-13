@@ -15,6 +15,11 @@ interface DocumentsTableProps {
 }
 
 const DocumentsTable: React.FC<DocumentsTableProps> = ({data}) => {
+
+  const sizeInKb = (size: number): string => {
+    return (size / 1024).toFixed(2) + ' KB';
+  }
+
   return (
     <table className="min-w-full divide-y divide-gray-200">
       <thead className="bg-gray-50">
@@ -29,7 +34,7 @@ const DocumentsTable: React.FC<DocumentsTableProps> = ({data}) => {
         {data.map((document) => (
           <tr key={document.id}>
             <td className="px-6 py-4 whitespace-nowrap">{document.filename}</td>
-            <td className="px-6 py-4 whitespace-nowrap">{document.filesize} bytes</td>
+            <td className="px-6 py-4 whitespace-nowrap"> {sizeInKb(document.filesize)}</td>
             <td className="px-6 py-4 whitespace-nowrap">{new Date(document.uploadDate).toLocaleDateString('de-DE')}</td>
             <td className="px-6 py-4 whitespace-nowrap">
               {!document.analysisResult && <RunModelComponent id={document.id} />}
