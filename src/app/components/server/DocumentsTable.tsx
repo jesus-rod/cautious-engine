@@ -38,7 +38,9 @@ const DocumentsTable: React.FC<DocumentsTableProps> = ({data}) => {
             <td className="px-6 py-4 whitespace-nowrap">{new Date(document.uploadDate).toLocaleDateString('de-DE')}</td>
             <td className="px-6 py-4 whitespace-nowrap">
               {!document.analysisResult && <RunModelComponent id={document.id} />}
-              {document.analysisResult && <ShowModelComponent id={document.id} />}
+              {document.analysisResult &&
+                <ShowModelComponent id={document.id} />
+              }
             </td>
           </tr>
         ))}
