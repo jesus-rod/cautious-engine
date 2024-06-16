@@ -1,5 +1,6 @@
 'use client';
 
+import {processDocument} from '@/app/functions';
 import React, {useState} from 'react';
 import ShowModelComponent from './ShowModelComponent';
 
@@ -15,19 +16,13 @@ const RunModelComponent: React.FC<RunModelProps> = ({id}) => {
   const runTopicModeling = async () => {
     setIsButtonDisabled(true);
     try {
-      const response = await fetch(`api/documents/${id}/process`, {
-        method: 'POST',
-        body: JSON.stringify({id}),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+      const response = await processDocument(id);
 
       if (response.ok) {
         setDidModelRunSuccessfully(true);
         buttonMessage = 'Show Document';
       } else {
-        console.error('Error running topic modeling :(');
+        console.error('Error running topic modeling: HTTP', response.status);
       }
     } catch (error) {
       console.error('Error running topic modeling:', error);

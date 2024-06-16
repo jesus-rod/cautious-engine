@@ -1,14 +1,7 @@
+import {DocumentData} from '@/app/types';
 import React from 'react';
 import RunModelComponent from '../client/RunModelComponent';
 import ShowModelComponent from '../client/ShowModelComponent';
-
-interface DocumentData {
-  id: string;
-  filename: string;
-  filesize: number;
-  uploadDate: string;
-  analysisResult: string;
-}
 
 interface DocumentsTableProps {
   data: DocumentData[];

@@ -1,4 +1,5 @@
 'use client';
+import {uploadFile} from '@/app/functions';
 import {useRouter} from 'next/navigation';
 import React, {useState} from 'react';
 
@@ -26,19 +27,12 @@ export default function Upload() {
     if (!file) return;
     setIsButtonDisabled(true);
 
-    const formData = new FormData();
-    formData.append('file', file);
-
     try {
-      const response = await fetch('/api/upload', {
-        method: 'POST',
-        body: formData,
-      });
-
+      const response = await uploadFile(file);
       if (response.ok) {
         setMessage('File uploaded successfully.');
       } else {
-        setMessage('File upload failed (frontend error)');
+        setMessage('File upload failed: HTTP' + response.status);
       }
     } catch (error) {
       if (error instanceof Error) {
@@ -50,6 +44,7 @@ export default function Upload() {
       setIsButtonDisabled(false);
     }
   };
+
 
   return (
     <div>

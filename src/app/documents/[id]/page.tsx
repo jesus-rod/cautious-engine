@@ -1,27 +1,18 @@
 import GraphVisualization from '@/app/components/client/GraphVisualization';
+import {fetchDocumentDetail} from '@/app/functions';
+import {DocumentData} from '@/app/types';
 import {notFound} from 'next/navigation';
-
-async function getData(documentId: string) {
-  const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
-  const response = await fetch(`${baseUrl}/api/documents/${documentId}`, {next: {revalidate: 1}});
-  if (!response.ok) {
-    return null;
-  }
-
-  const data = await response.json();
-  return data;
-}
-
-
 
 export default async function DocumentDetail({params}: {params: {id: string}}) {
   const {id} = params;
-  const data = await getData(id);
-  const analysisResult = data.analysisResult;
-  const parsedAnalysisResult = JSON.parse(analysisResult);
+  const data: DocumentData | null = await fetchDocumentDetail(id);
+
   if (!data) {
     notFound();
   }
+  const analysisResult = data.analysisResult;
+  const parsedAnalysisResult = JSON.parse(analysisResult);
+
 
   return (
     <main>

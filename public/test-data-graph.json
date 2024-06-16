@@ -1,33 +1,62 @@
 {
   "topics": [
-    { "name": "healthy eating", "occurrences": 12 },
-    { "name": "nutrients", "occurrences": 6 },
-    { "name": "fruits and vegetables", "occurrences": 4 },
-    { "name": "whole grains", "occurrences": 3 },
-    { "name": "lean proteins", "occurrences": 3 },
-    { "name": "healthy fats", "occurrences": 3 },
-    { "name": "hydration", "occurrences": 2 },
-    { "name": "portion control", "occurrences": 2 },
-    { "name": "processed foods", "occurrences": 2 },
-    { "name": "meal planning", "occurrences": 2 },
-    { "name": "mindful eating", "occurrences": 2 },
-    { "name": "chronic diseases", "occurrences": 2 }
+    { "name": "Healthy eating", "occurrences": 1 },
+    { "name": "Well-being", "occurrences": 1 },
+    { "name": "Longevity", "occurrences": 1 },
+    { "name": "Nutrients", "occurrences": 1 },
+    { "name": "Balanced diet", "occurrences": 1 },
+    { "name": "Fruits and vegetables", "occurrences": 2 },
+    { "name": "Whole grains", "occurrences": 2 },
+    { "name": "Lean proteins", "occurrences": 1 },
+    { "name": "Healthy fats", "occurrences": 1 },
+    { "name": "Vitamins", "occurrences": 1 },
+    { "name": "Minerals", "occurrences": 1 },
+    { "name": "Antioxidants", "occurrences": 1 },
+    { "name": "Fiber", "occurrences": 1 },
+    { "name": "Digestion", "occurrences": 1 },
+    { "name": "Chronic diseases", "occurrences": 1 },
+    { "name": "Heart disease", "occurrences": 1 },
+    { "name": "Stroke", "occurrences": 1 },
+    { "name": "Cancers", "occurrences": 1 },
+    { "name": "Blood sugar levels", "occurrences": 1 },
+    { "name": "Cholesterol profiles", "occurrences": 1 },
+    { "name": "Cardiovascular health", "occurrences": 1 }
   ],
   "relationships": [
-    { "from": "healthy eating", "to": "nutrients", "occurrences": 6 },
+    { "from": "Healthy eating", "to": "Well-being", "occurrences": 1 },
+    { "from": "Healthy eating", "to": "Longevity", "occurrences": 1 },
+    { "from": "Healthy eating", "to": "Nutrients", "occurrences": 1 },
+    { "from": "Healthy eating", "to": "Balanced diet", "occurrences": 1 },
     {
-      "from": "healthy eating",
-      "to": "fruits and vegetables",
-      "occurrences": 4
+      "from": "Balanced diet",
+      "to": "Fruits and vegetables",
+      "occurrences": 1
     },
-    { "from": "healthy eating", "to": "whole grains", "occurrences": 3 },
-    { "from": "healthy eating", "to": "lean proteins", "occurrences": 3 },
-    { "from": "healthy eating", "to": "healthy fats", "occurrences": 3 },
-    { "from": "healthy eating", "to": "hydration", "occurrences": 2 },
-    { "from": "healthy eating", "to": "portion control", "occurrences": 2 },
-    { "from": "healthy eating", "to": "processed foods", "occurrences": 2 },
-    { "from": "healthy eating", "to": "meal planning", "occurrences": 2 },
-    { "from": "healthy eating", "to": "mindful eating", "occurrences": 2 },
-    { "from": "healthy eating", "to": "chronic diseases", "occurrences": 2 }
+    { "from": "Balanced diet", "to": "Whole grains", "occurrences": 1 },
+    { "from": "Balanced diet", "to": "Lean proteins", "occurrences": 1 },
+    { "from": "Balanced diet", "to": "Healthy fats", "occurrences": 1 },
+    { "from": "Fruits and vegetables", "to": "Nutrients", "occurrences": 1 },
+    { "from": "Fruits and vegetables", "to": "Fiber", "occurrences": 1 },
+    { "from": "Fruits and vegetables", "to": "Digestion", "occurrences": 1 },
+    {
+      "from": "Fruits and vegetables",
+      "to": "Chronic diseases",
+      "occurrences": 1
+    },
+    { "from": "Chronic diseases", "to": "Heart disease", "occurrences": 1 },
+    { "from": "Chronic diseases", "to": "Stroke", "occurrences": 1 },
+    { "from": "Chronic diseases", "to": "Cancers", "occurrences": 1 },
+    { "from": "Whole grains", "to": "Energy levels", "occurrences": 1 },
+    { "from": "Whole grains", "to": "Cardiovascular health", "occurrences": 1 },
+    {
+      "from": "Cardiovascular health",
+      "to": "Blood sugar levels",
+      "occurrences": 1
+    },
+    {
+      "from": "Cardiovascular health",
+      "to": "Cholesterol profiles",
+      "occurrences": 1
+    }
   ]
 }
