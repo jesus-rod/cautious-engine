@@ -1,62 +1,126 @@
 {
   "topics": [
-    { "name": "Healthy eating", "occurrences": 1 },
-    { "name": "Well-being", "occurrences": 1 },
-    { "name": "Longevity", "occurrences": 1 },
-    { "name": "Nutrients", "occurrences": 1 },
-    { "name": "Balanced diet", "occurrences": 1 },
-    { "name": "Fruits and vegetables", "occurrences": 2 },
-    { "name": "Whole grains", "occurrences": 2 },
-    { "name": "Lean proteins", "occurrences": 1 },
-    { "name": "Healthy fats", "occurrences": 1 },
-    { "name": "Vitamins", "occurrences": 1 },
-    { "name": "Minerals", "occurrences": 1 },
-    { "name": "Antioxidants", "occurrences": 1 },
-    { "name": "Fiber", "occurrences": 1 },
-    { "name": "Digestion", "occurrences": 1 },
-    { "name": "Chronic diseases", "occurrences": 1 },
-    { "name": "Heart disease", "occurrences": 1 },
-    { "name": "Stroke", "occurrences": 1 },
-    { "name": "Cancers", "occurrences": 1 },
-    { "name": "Blood sugar levels", "occurrences": 1 },
-    { "name": "Cholesterol profiles", "occurrences": 1 },
-    { "name": "Cardiovascular health", "occurrences": 1 }
+    { "name": "alimentación saludable", "occurrences": 18 },
+    { "name": "nutrientes", "occurrences": 6 },
+    { "name": "frutas y verduras", "occurrences": 8 },
+    { "name": "granos enteros", "occurrences": 6 },
+    { "name": "proteínas", "occurrences": 6 },
+    { "name": "grasas saludables", "occurrences": 6 },
+    { "name": "equilibrio", "occurrences": 4 },
+    { "name": "moderación", "occurrences": 4 },
+    { "name": "salud física", "occurrences": 4 },
+    { "name": "salud mental", "occurrences": 4 },
+    { "name": "control de peso", "occurrences": 4 },
+    { "name": "niveles de energía", "occurrences": 4 },
+    { "name": "longevidad", "occurrences": 4 },
+    { "name": "beneficios de la alimentación saludable", "occurrences": 4 },
+    { "name": "componentes de una dieta saludable", "occurrences": 5 },
+    { "name": "consejos prácticos", "occurrences": 7 },
+    { "name": "desafíos y soluciones", "occurrences": 4 }
   ],
   "relationships": [
-    { "from": "Healthy eating", "to": "Well-being", "occurrences": 1 },
-    { "from": "Healthy eating", "to": "Longevity", "occurrences": 1 },
-    { "from": "Healthy eating", "to": "Nutrients", "occurrences": 1 },
-    { "from": "Healthy eating", "to": "Balanced diet", "occurrences": 1 },
+    { "from": "alimentación saludable", "to": "nutrientes", "occurrences": 6 },
     {
-      "from": "Balanced diet",
-      "to": "Fruits and vegetables",
-      "occurrences": 1
-    },
-    { "from": "Balanced diet", "to": "Whole grains", "occurrences": 1 },
-    { "from": "Balanced diet", "to": "Lean proteins", "occurrences": 1 },
-    { "from": "Balanced diet", "to": "Healthy fats", "occurrences": 1 },
-    { "from": "Fruits and vegetables", "to": "Nutrients", "occurrences": 1 },
-    { "from": "Fruits and vegetables", "to": "Fiber", "occurrences": 1 },
-    { "from": "Fruits and vegetables", "to": "Digestion", "occurrences": 1 },
-    {
-      "from": "Fruits and vegetables",
-      "to": "Chronic diseases",
-      "occurrences": 1
-    },
-    { "from": "Chronic diseases", "to": "Heart disease", "occurrences": 1 },
-    { "from": "Chronic diseases", "to": "Stroke", "occurrences": 1 },
-    { "from": "Chronic diseases", "to": "Cancers", "occurrences": 1 },
-    { "from": "Whole grains", "to": "Energy levels", "occurrences": 1 },
-    { "from": "Whole grains", "to": "Cardiovascular health", "occurrences": 1 },
-    {
-      "from": "Cardiovascular health",
-      "to": "Blood sugar levels",
-      "occurrences": 1
+      "from": "alimentación saludable",
+      "to": "frutas y verduras",
+      "occurrences": 8
     },
     {
-      "from": "Cardiovascular health",
-      "to": "Cholesterol profiles",
-      "occurrences": 1
+      "from": "alimentación saludable",
+      "to": "granos enteros",
+      "occurrences": 6
+    },
+    { "from": "alimentación saludable", "to": "proteínas", "occurrences": 6 },
+    {
+      "from": "alimentación saludable",
+      "to": "grasas saludables",
+      "occurrences": 6
+    },
+    { "from": "alimentación saludable", "to": "equilibrio", "occurrences": 4 },
+    { "from": "alimentación saludable", "to": "moderación", "occurrences": 4 },
+    {
+      "from": "alimentación saludable",
+      "to": "beneficios de la alimentación saludable",
+      "occurrences": 4
+    },
+    {
+      "from": "alimentación saludable",
+      "to": "componentes de una dieta saludable",
+      "occurrences": 5
+    },
+    {
+      "from": "alimentación saludable",
+      "to": "consejos prácticos",
+      "occurrences": 7
+    },
+    {
+      "from": "alimentación saludable",
+      "to": "desafíos y soluciones",
+      "occurrences": 4
+    },
+    { "from": "nutrientes", "to": "frutas y verduras", "occurrences": 2 },
+    { "from": "nutrientes", "to": "granos enteros", "occurrences": 2 },
+    { "from": "nutrientes", "to": "proteínas", "occurrences": 2 },
+    { "from": "nutrientes", "to": "grasas saludables", "occurrences": 2 },
+    { "from": "frutas y verduras", "to": "granos enteros", "occurrences": 2 },
+    { "from": "frutas y verduras", "to": "proteínas", "occurrences": 2 },
+    {
+      "from": "frutas y verduras",
+      "to": "grasas saludables",
+      "occurrences": 2
+    },
+    { "from": "granos enteros", "to": "proteínas", "occurrences": 2 },
+    { "from": "granos enteros", "to": "grasas saludables", "occurrences": 2 },
+    { "from": "proteínas", "to": "grasas saludables", "occurrences": 2 },
+    {
+      "from": "beneficios de la alimentación saludable",
+      "to": "salud física",
+      "occurrences": 2
+    },
+    {
+      "from": "beneficios de la alimentación saludable",
+      "to": "salud mental",
+      "occurrences": 2
+    },
+    {
+      "from": "beneficios de la alimentación saludable",
+      "to": "control de peso",
+      "occurrences": 2
+    },
+    {
+      "from": "beneficios de la alimentación saludable",
+      "to": "niveles de energía",
+      "occurrences": 2
+    },
+    {
+      "from": "beneficios de la alimentación saludable",
+      "to": "longevidad",
+      "occurrences": 2
+    },
+    { "from": "salud física", "to": "salud mental", "occurrences": 2 },
+    { "from": "salud física", "to": "control de peso", "occurrences": 2 },
+    { "from": "salud física", "to": "niveles de energía", "occurrences": 2 },
+    { "from": "salud física", "to": "longevidad", "occurrences": 2 },
+    { "from": "salud mental", "to": "control de peso", "occurrences": 2 },
+    { "from": "salud mental", "to": "niveles de energía", "occurrences": 2 },
+    { "from": "salud mental", "to": "longevidad", "occurrences": 2 },
+    { "from": "control de peso", "to": "niveles de energía", "occurrences": 2 },
+    { "from": "control de peso", "to": "longevidad", "occurrences": 2 },
+    { "from": "niveles de energía", "to": "longevidad", "occurrences": 2 },
+    {
+      "from": "componentes de una dieta saludable",
+      "to": "consejos prácticos",
+      "occurrences": 5
+    },
+    {
+      "from": "componentes de una dieta saludable",
+      "to": "desafíos y soluciones",
+      "occurrences": 4
+    },
+    {
+      "from": "consejos prácticos",
+      "to": "desafíos y soluciones",
+      "occurrences": 4
     }
   ]
 }

@@ -13,7 +13,6 @@ export async function fetchDocumentList(): Promise<DocumentData[]> {
 }
 
 export async function fetchDocumentDetail(documentId: string): Promise<DocumentData | null> {
-  const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
   const response = await fetch(`${baseUrl}/api/documents/${documentId}`, {next: {revalidate: 1}});
   if (!response.ok) {
     return null;

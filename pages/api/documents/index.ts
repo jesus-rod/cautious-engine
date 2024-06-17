@@ -1,23 +1,20 @@
-import {PrismaClient} from '@prisma/client';
-import {NextApiRequest, NextApiResponse} from 'next';
+import { NextApiRequest, NextApiResponse } from 'next';
+import { DatabaseHandler } from '../DatabaseHandler';
 
-const prisma = new PrismaClient();
+const handleGetRequest = async (req: NextApiRequest, res: NextApiResponse) => {
+  try {
+    const files = await DatabaseHandler.getFiles();
+    res.status(200).json(files);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error retrieving files' });
+  }
+};
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
   if (req.method === 'GET') {
-    try {
-      const files = await prisma.fileMetadata.findMany({
-        orderBy: {
-          uploadDate: 'desc'
-        }
-      })
-
-      res.status(200).json(files);
-
-    } catch (error) {
-      res.status(500).json({message: 'Error retrieving files'});
-    }
+    await handleGetRequest(req, res);
   } else {
-    res.status(405).json({message: 'Method not allowed'});
+    res.status(405).json({ message: 'Method not allowed' });
   }
 }

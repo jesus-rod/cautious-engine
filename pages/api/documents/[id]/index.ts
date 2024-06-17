@@ -1,20 +1,30 @@
-import {PrismaClient} from '@prisma/client';
-import {NextApiRequest, NextApiResponse} from 'next';
+import { NextApiRequest, NextApiResponse } from 'next';
+import { DatabaseHandler } from '../../DatabaseHandler';
 
-const prisma = new PrismaClient();
+// Dependency Injection and Separation of Concerns
+const handleGetRequest = async (req: NextApiRequest, res: NextApiResponse) => {
+  const { id } = req.query;
+
+  if (!id || typeof id !== 'string') {
+    return res.status(400).json({ message: 'Invalid or missing id parameter' });
+  }
+
+  try {
+    const document = await DatabaseHandler.getFileById(id);
+    if (!document) {
+      return res.status(404).json({ message: 'Document not found' });
+    }
+    res.status(200).json(document);
+  } catch (error) {
+    console.error(error); // Log the error
+    res.status(500).json({ message: 'Error retrieving files' });
+  }
+};
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
-  const {id} = req.query;
   if (req.method === 'GET') {
-    try {
-      const document = await prisma.fileMetadata.findUnique({
-        where: {id: String(id)},
-      })
-      res.status(200).json(document);
-    } catch (error) {
-      res.status(500).json({message: 'Error retrieving files'});
-    }
+    await handleGetRequest(req, res);
   } else {
-    res.status(405).json({message: 'Method not allowed'});
+    res.status(405).json({ message: 'Method not allowed' });
   }
 }
