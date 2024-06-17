@@ -6,7 +6,7 @@ This project uses:
 - [Prisma](https://www.prisma.io/orm) as a ORM (Object-Relational Mapping)
   - Currently a SQLite database was chosen for demonstration simplicity but this could be easily changed to another provider under the file [schema.prisma](prisma/schema.prisma)
 - [openai-node](https://github.com/openai/openai-node) For interacting with chat GPT
-- [vis-networ](https://github.com/visjs/vis-network/) For creating a network graph
+- [vis-network](https://github.com/visjs/vis-network/) For creating a network graph
 
 ## Getting Started
 
@@ -41,4 +41,4 @@ npm run dev
 
 ## Example Graph
 
-![Example Graph](/public/example-graph.png){width=70%}
+![Example Graph](/public/example-graph.png)

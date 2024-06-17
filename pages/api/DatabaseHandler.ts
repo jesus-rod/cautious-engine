@@ -1,5 +1,7 @@
 import { PrismaClient } from '@prisma/client';
 
+
+// Use the Singleton pattern to avoid multiple DB instances
 declare global {
   var prisma: PrismaClient | undefined;
 }
