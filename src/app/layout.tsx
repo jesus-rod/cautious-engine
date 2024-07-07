@@ -1,4 +1,5 @@
 import type {Metadata} from "next";
+import {ThemeProvider} from 'next-themes';
 import {Inter} from "next/font/google";
 import Container from "./components/container";
 import Header from "./components/header";
@@ -19,10 +20,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Container>
-          <Header />
-          {children}
-        </Container>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Container>
+            <Header />
+            {children}
+          </Container>
+        </ThemeProvider>
       </body>
 
     </html>

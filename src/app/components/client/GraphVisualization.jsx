@@ -1,10 +1,13 @@
 'use client';
 
+import {useTheme} from 'next-themes';
 import {useEffect, useRef} from 'react';
 import {Network} from 'vis-network';
 
 const GraphVisualization = ({ data }) => {
   const graphRef = useRef(null);
+  let theme = useTheme();
+  let isDarkTheme = theme.theme === 'dark';
 
   useEffect(() => {
     const { topics, relationships } = data;
@@ -14,7 +17,7 @@ const GraphVisualization = ({ data }) => {
       value: topic.occurrences * 10,
       font: {
         size: 16,
-        color: '#000000'
+        color: isDarkTheme ? 'white' : 'black'
       },
       scaling: {
         min: 10,
@@ -62,7 +65,7 @@ const GraphVisualization = ({ data }) => {
     return () => {
       network.destroy();
     };
-  }, [data]);
+  }, [data, isDarkTheme]);
 
   return <div ref={graphRef} style={{ height: '1000px' }} />;
 };

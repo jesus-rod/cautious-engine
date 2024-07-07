@@ -14,22 +14,22 @@ const DocumentsTable: React.FC<DocumentsTableProps> = ({data}) => {
   }
 
   return (
-    <table className="min-w-full divide-y divide-gray-200">
+    <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
       <thead className="bg-gray-50">
         <tr>
-          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Filename</th>
-          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Filesize</th>
-          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date Uploaded</th>
-          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider bg-gray-50 dark:bg-gray-800">Filename</th>
+          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider bg-gray-50 dark:bg-gray-800">Filesize</th>
+          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider bg-gray-50 dark:bg-gray-800">Date Uploaded</th>
+          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider bg-gray-50 dark:bg-gray-800">Actions</th>
         </tr>
       </thead>
-      <tbody className="bg-white divide-y divide-gray-200">
+      <tbody className="bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-700">
         {data.map((document) => (
           <tr key={document.id}>
-            <td className="px-6 py-4 whitespace-nowrap">{document.filename}</td>
-            <td className="px-6 py-4 whitespace-nowrap"> {sizeInKb(document.filesize)}</td>
-            <td className="px-6 py-4 whitespace-nowrap">{new Date(document.uploadDate).toLocaleDateString('de-DE')}</td>
-            <td className="px-6 py-4 whitespace-nowrap">
+            <td className="px-6 py-4 whitespace-nowrap text-gray-900 dark:text-gray-100">{document.filename}</td>
+            <td className="px-6 py-4 whitespace-nowrap text-gray-900 dark:text-gray-100"> {sizeInKb(document.filesize)}</td>
+            <td className="px-6 py-4 whitespace-nowrap text-gray-900 dark:text-gray-100">{new Date(document.uploadDate).toLocaleDateString('de-DE')}</td>
+            <td className="px-6 py-4 whitespace-nowrap text-gray-900 dark:text-gray-100">
               {!document.analysisResult && <RunModelComponent id={document.id} />}
               {document.analysisResult &&
                 <ShowModelComponent id={document.id} />

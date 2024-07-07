@@ -45,20 +45,19 @@ export default function Upload() {
     }
   };
 
-
   return (
-    <div>
+    <div className="text-zinc-900 dark:text-zinc-100">
       <form onSubmit={handleSubmit}>
         <input
           type="file"
           accept=".txt"
           onChange={handleFileChange}
-          className="border-2 border-stone-300 py-2 mb-4 mr-4 px-2 rounded"
+          className="border-2 border-stone-300 dark:border-stone-600 py-2 mb-4 mr-4 px-2 rounded bg-white dark:bg-gray-800 text-zinc-900 dark:text-zinc-100"
         />
         <button
           type="submit"
           disabled={isButtonDisabled}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded"
+          className="bg-blue-500 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-800 text-white font-bold py-3 px-4 rounded disabled:opacity-50"
         >
           {isButtonDisabled ? (
             <div className="flex items-center">
@@ -73,8 +72,8 @@ export default function Upload() {
           )}
         </button>
         {message && (
-          <p>
-            <button onClick={handleNavigation}>
+          <p className="mt-4 text-zinc-700 dark:text-zinc-300">
+            <button onClick={handleNavigation} className="text-blue-500 dark:text-blue-400 hover:underline">
               {message} <b>Click here</b> to see your documents.
             </button>
           </p>
