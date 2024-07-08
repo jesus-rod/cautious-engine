@@ -8,15 +8,19 @@ import {useEffect, useState} from 'react';
 const siteRoutes = [
   {
     href: "/",
+    label: "Sign up",
+  },
+  {
+    href: "/signin",
+    label: "Sign in",
+  },
+  {
+    href: "/upload",
     label: "Upload",
   },
   {
     href: "/documents",
     label: "Documents",
-  },
-  {
-    href: "/topics",
-    label: "Topics",
   },
 ];
 

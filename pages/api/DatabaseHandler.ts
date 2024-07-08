@@ -8,7 +8,39 @@ declare global {
 
 const prisma = global.prisma || new PrismaClient();
 
+interface User {
+  id: string;
+  name: string | null;
+  email: string | null;
+}
+
 export class DatabaseHandler {
+
+  static getPrismaClient() {
+    return prisma;
+  }
+
+  static async createUser(name: string, email: string, password: string): Promise<User> {
+    try {
+      const user = await prisma.user.create({
+        data: {
+          name,
+          email,
+          password,
+        },
+        select: {
+          id: true,
+          name: true,
+          email: true,
+        },
+      });
+      return user;
+    } catch (error) {
+      console.error('Error creating user:', error);
+      throw error;
+    }
+  }
+
   static async saveFileMetadata(filename: string, filesize: number): Promise<void> {
     await prisma.fileMetadata.create({
       data: {

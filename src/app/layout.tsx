@@ -1,15 +1,19 @@
 import type {Metadata} from "next";
 import {ThemeProvider} from 'next-themes';
-import {Inter} from "next/font/google";
+import {Plus_Jakarta_Sans} from "next/font/google";
+import Footer from "./components/Footer";
 import Container from "./components/container";
 import Header from "./components/header";
 import "./globals.css";
 
-const inter = Inter({subsets: ["latin"]});
+const fontSas = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"]
+});
 
 export const metadata: Metadata = {
-  title: "Topic Modeling",
-  description: "Using topic modeling to analyze text files",
+  title: "Topicfy",
+  description: "Model topics from text files securely in your browser.",
 };
 
 export default function RootLayout({
@@ -19,11 +23,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={fontSas.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Container>
             <Header />
             {children}
+            <Footer />
           </Container>
         </ThemeProvider>
       </body>

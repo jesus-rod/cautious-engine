@@ -18,12 +18,6 @@ export const createPrompt = (fileContents: string, topics: string[]) => {
   9. Lastly, a property named "newTopics" which will contain the new topics found in the text.`;
 }
 
-// Make async call to database
-// const getTopics = async () => {
-
-// }
-
-
 export class LLMService {
   static async runAlgorithm(fileContents: string, topics: string[]): Promise<{topics: string[]; relationships: string[][];} | null> {
     const params: OpenAI.Chat.ChatCompletionCreateParams = {
