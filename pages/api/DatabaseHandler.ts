@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client';
+import {PrismaClient} from '@prisma/client';
 
 
 // Use the Singleton pattern to avoid multiple DB instances
@@ -30,16 +30,20 @@ export class DatabaseHandler {
 
   static async getFileById(id: string) {
     return await prisma.fileMetadata.findUnique({
-      where: { id: id },
+      where: {id: id},
     });
   }
 
   static async updateFileAnalysisResult(id: string, analysisResult: string) {
     return await prisma.fileMetadata.update({
-      where: { id: id },
+      where: {id: id},
       data: {
         analysisResult: analysisResult,
       },
     });
+  }
+
+  static async getTopics() {
+    return await prisma.topic.findMany();
   }
 }

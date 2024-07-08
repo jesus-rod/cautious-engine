@@ -14,9 +14,15 @@ generator client {
 }
 
 model FileMetadata {
-  id         String   @id @default(uuid())
-  filename   String
-  filesize   Int
-  uploadDate DateTime @default(now())
+  id             String   @id @default(uuid())
+  filename       String
+  filesize       Int
+  uploadDate     DateTime @default(now())
   analysisResult String
+}
+
+model Topic {
+  id        String   @id @default(uuid())
+  name      String   @unique
+  createdAt DateTime @default(now())
 }

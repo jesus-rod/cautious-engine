@@ -1,0 +1,66 @@
+{
+  "topics": [
+    { "name": "hydration", "occurrences": 2 },
+    { "name": "portion control", "occurrences": 2 },
+    { "name": "healthy eating", "occurrences": 6 },
+    { "name": "nutrients", "occurrences": 4 },
+    { "name": "fruits and vegetables", "occurrences": 2 },
+    { "name": "whole grains", "occurrences": 2 },
+    { "name": "lean proteins", "occurrences": 2 },
+    { "name": "healthy fats", "occurrences": 3 },
+    { "name": "meal planning", "occurrences": 2 },
+    { "name": "processed foods", "occurrences": 2 },
+    { "name": "chronic diseases", "occurrences": 3 },
+    { "name": "mindful eating", "occurrences": 2 },
+    { "name": "unhealthy fats", "occurrences": 1 },
+    { "name": "hypertension", "occurrences": 1 },
+    { "name": "weight gain", "occurrences": 1 },
+    { "name": "diabetes", "occurrences": 2 },
+    { "name": "fatty liver disease", "occurrences": 1 },
+    { "name": "mental clarity", "occurrences": 1 },
+    { "name": "mood stability", "occurrences": 1 },
+    { "name": "overall happiness", "occurrences": 1 }
+  ],
+  "relationships": [
+    { "from": "healthy eating", "to": "nutrients", "occurrences": 4 },
+    {
+      "from": "healthy eating",
+      "to": "fruits and vegetables",
+      "occurrences": 2
+    },
+    { "from": "healthy eating", "to": "whole grains", "occurrences": 2 },
+    { "from": "healthy eating", "to": "lean proteins", "occurrences": 2 },
+    { "from": "healthy eating", "to": "healthy fats", "occurrences": 3 },
+    { "from": "healthy eating", "to": "chronic diseases", "occurrences": 3 },
+    { "from": "healthy eating", "to": "mindful eating", "occurrences": 2 },
+    { "from": "nutrients", "to": "fruits and vegetables", "occurrences": 1 },
+    { "from": "nutrients", "to": "whole grains", "occurrences": 1 },
+    { "from": "nutrients", "to": "lean proteins", "occurrences": 1 },
+    { "from": "nutrients", "to": "healthy fats", "occurrences": 1 },
+    { "from": "nutrients", "to": "diabetes", "occurrences": 1 },
+    { "from": "fruits and vegetables", "to": "whole grains", "occurrences": 1 },
+    {
+      "from": "fruits and vegetables",
+      "to": "lean proteins",
+      "occurrences": 1
+    },
+    { "from": "whole grains", "to": "lean proteins", "occurrences": 1 },
+    { "from": "whole grains", "to": "healthy fats", "occurrences": 1 },
+    { "from": "lean proteins", "to": "healthy fats", "occurrences": 1 },
+    { "from": "lean proteins", "to": "diabetes", "occurrences": 1 },
+    { "from": "healthy fats", "to": "chronic diseases", "occurrences": 1 },
+    { "from": "healthy fats", "to": "mental clarity", "occurrences": 1 },
+    { "from": "healthy fats", "to": "mood stability", "occurrences": 1 },
+    { "from": "healthy fats", "to": "overall happiness", "occurrences": 1 },
+    { "from": "chronic diseases", "to": "diabetes", "occurrences": 1 },
+    {
+      "from": "chronic diseases",
+      "to": "fatty liver disease",
+      "occurrences": 1
+    },
+    { "from": "diabetes", "to": "unhealthy fats", "occurrences": 1 },
+    { "from": "diabetes", "to": "hypertension", "occurrences": 1 },
+    { "from": "diabetes", "to": "weight gain", "occurrences": 1 }
+  ],
+  "newTopics": []
+}
