@@ -1,15 +1,11 @@
 'use client';
 
-import {signIn} from 'next-auth/react';
+import {loginUser} from '@/app/functions';
+import {LoginData} from '@/app/types';
 import {useRouter} from 'next/navigation';
 import React, {useState} from 'react';
 import {useForm} from 'react-hook-form';
-import {DeskSVG} from '../svgs/DeskSVG';
-
-type LoginData = {
-  email: string;
-  password: string;
-};
+import LoginSVG from './svgs/LoginSVG';
 
 export const LoginForm: React.FC = () => {
   const {register, handleSubmit, formState: {errors}} = useForm<LoginData>();
@@ -18,11 +14,7 @@ export const LoginForm: React.FC = () => {
 
   const onSubmit = async (data: LoginData) => {
     try {
-      const result = await signIn('credentials', {
-        redirect: false,
-        email: data.email,
-        password: data.password,
-      });
+      const result = await loginUser(data);
 
       if (result?.ok) {
         router.push('/upload');
@@ -79,7 +71,7 @@ export const LoginForm: React.FC = () => {
       </div>
       <div className="w-1/2 bg-gray-200 dark:bg-gray-700">
         <div className="w-full h-full">
-          <DeskSVG />
+          <LoginSVG />
         </div>
       </div>
     </div>

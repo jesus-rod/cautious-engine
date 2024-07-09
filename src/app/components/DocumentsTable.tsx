@@ -1,8 +1,7 @@
 import {DocumentData} from '@/app/types';
 import React from 'react';
-import RunModelComponent from '../client/RunModelComponent';
-import ShowModelComponent from '../client/ShowModelComponent';
-
+import RunModelComponent from './RunModelComponent';
+import ShowModelComponent from './ShowModelComponent';
 
 interface DocumentsTableProps {
   data: DocumentData[];

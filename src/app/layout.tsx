@@ -1,10 +1,10 @@
+import Container from "@/app/components/Container";
+import Header from "@/app/components/Header";
 import type {Metadata} from "next";
 import {ThemeProvider} from 'next-themes';
 import {Plus_Jakarta_Sans} from "next/font/google";
 import Footer from "./components/Footer";
-import SessionWrapper from "./components/client/SessionWrapper";
-import Container from "./components/container";
-import Header from "./components/header";
+import SessionWrapper from "./components/SessionWrapper";
 import "./globals.css";
 
 

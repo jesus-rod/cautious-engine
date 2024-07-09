@@ -6,14 +6,18 @@ export const openai = new OpenAI({
 
 export const createPrompt = (fileContents: string, topics: string[]) => {
   const topicsString = topics.map((topic) => `"${topic}"`).join(", ");
-  return `1. Given the following text: ${fileContents} 
-  2. Summarize the main topics using and the relationships between different topics.
-  3. Consider the existing topics: ${topicsString}
-  5. If the existing topics are not present in the text, create new topics.
-  6. Provide the output as a JSON containing three properties, one named "topics" which contains an array with the topic "name" and the times its "occurrences". This property will represent the nodes in a graph. 
-  7. Another property named "relationships" which will be used as edges in a graph. The edges should be represented as an array where each node contains an object with properties "from" and "to" and also a property "occurrences" to state how many times that connection ocurred in the text.
-  8. The relationships should be between the topics and the occurrences should be the number of times the topics are mentioned together in the text.
-  9. Lastly, a property named "newTopics" which will contain the new topics found in the text.`;
+  return `1. Given the following text: ${fileContents}
+  2. Summarize the main topics and describe the relationships between different topics in detail.
+  3. Consider the existing topics: ${topicsString}.
+  4. If the existing topics are not present in the text, create new topics.
+  5. Pay special attention to synonyms, related terms, and context to identify connections between topics. For example, "Vegan" and "Veganism" should be recognized as related and connected.
+  6. Provide the output as a JSON object containing four properties:
+    - "topics": an array where each element is an object with properties "name" and "occurrences", representing the frequency of each topic mentioned in the text. This will be used as nodes in a graph.
+    - "relationships": an array where each element is an object with properties "from", "to", and "occurrences", representing the number of times these topics are mentioned together in the text. This will be used as edges in a graph.
+    - "newTopics": an array containing any new topics found in the text that were not in the existing topics list.
+    - "summary": a brief summary of what the text is about.
+  7. Ensure that related topics are accurately connected based on their contextual usage in the text.
+  8. Validate that all relevant topics and their relationships are captured in the response.`;
 }
 
 export class LLMService {

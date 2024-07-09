@@ -1,6 +1,6 @@
 export const DeskSVG = () => (
   <svg
-    className="animated w-full h-full"
+    className="animated w-full h-full p-4"
     id="freepik_stories-telecommuting"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 500 500"

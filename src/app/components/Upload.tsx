@@ -12,8 +12,8 @@ export default function Upload() {
 
   const handleNavigation = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-    router.push('/documents');
     router.refresh();
+    router.push('/documents');
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {

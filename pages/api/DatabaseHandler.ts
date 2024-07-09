@@ -1,3 +1,4 @@
+import {User} from '@/app/types';
 import {PrismaClient} from '@prisma/client';
 
 
@@ -7,12 +8,6 @@ declare global {
 }
 
 const prisma = global.prisma || new PrismaClient();
-
-interface User {
-  id: string;
-  name: string | null;
-  email: string | null;
-}
 
 export class DatabaseHandler {
 

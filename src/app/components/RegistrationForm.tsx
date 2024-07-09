@@ -1,15 +1,11 @@
 'use client';
 
+import {registerUser} from '@/app/functions';
+import {RegisterData} from '@/app/types';
 import {useRouter} from 'next/navigation';
 import React, {useState} from 'react';
 import {useForm} from 'react-hook-form';
-import {DeskSVG} from '../svgs/DeskSVG';
-
-type RegisterData = {
-  name: string;
-  email: string;
-  password: string;
-};
+import {DeskSVG} from './svgs/DeskSVG';
 
 export const RegistrationForm: React.FC = () => {
   const router = useRouter();
@@ -18,11 +14,7 @@ export const RegistrationForm: React.FC = () => {
 
   const onSubmit = async (data: RegisterData) => {
     try {
-      const response = await fetch('/api/auth/register', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(data)
-      });
+      const response = await registerUser(data);
 
       if (response.ok) {
         router.push('/upload');

@@ -1,4 +1,4 @@
-import DocumentsList from "@/app/components/server/DocumentList";
+import DocumentsList from "@/app/components/DocumentList";
 import {getServerSession} from "next-auth/next";
 import {redirect} from "next/navigation";
 import {authOptions} from "../../../pages/api/auth/[...nextauth]";
