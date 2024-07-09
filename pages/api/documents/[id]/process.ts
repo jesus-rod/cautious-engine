@@ -1,7 +1,7 @@
 import {NextApiRequest, NextApiResponse} from 'next';
 import {DatabaseHandler} from '../../DatabaseHandler';
 import {FileHandler} from '../../FileHandler';
-import {LLMService} from './LLMService';
+import {LLMService} from '../../LLMService';
 
 
 const handlePostRequest = async (req: NextApiRequest, res: NextApiResponse) => {

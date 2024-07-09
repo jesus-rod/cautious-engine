@@ -26,7 +26,7 @@ export default function RootLayout({
   session: any;
 }>) {
   return (
-    <html lang="en">
+    <html suppressHydrationWarning={true} lang="en">
       <body className={fontSas.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <SessionWrapper>

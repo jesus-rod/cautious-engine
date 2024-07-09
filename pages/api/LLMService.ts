@@ -5,12 +5,10 @@ export const openai = new OpenAI({
 });
 
 export const createPrompt = (fileContents: string, topics: string[]) => {
-  let topicsString = topics.map((topic) => `"${topic}"`).join(", ");
-  return `
-  1. Given the following text: ${fileContents} 
-  2. Summarize the main topics using and their relationships.
+  const topicsString = topics.map((topic) => `"${topic}"`).join(", ");
+  return `1. Given the following text: ${fileContents} 
+  2. Summarize the main topics using and the relationships between different topics.
   3. Consider the existing topics: ${topicsString}
-  4. The topics are not case sensitive. Compare them as lowercase.
   5. If the existing topics are not present in the text, create new topics.
   6. Provide the output as a JSON containing three properties, one named "topics" which contains an array with the topic "name" and the times its "occurrences". This property will represent the nodes in a graph. 
   7. Another property named "relationships" which will be used as edges in a graph. The edges should be represented as an array where each node contains an object with properties "from" and "to" and also a property "occurrences" to state how many times that connection ocurred in the text.

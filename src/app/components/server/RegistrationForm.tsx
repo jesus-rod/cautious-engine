@@ -1,6 +1,6 @@
 'use client';
 
-import {redirect} from 'next/navigation';
+import {useRouter} from 'next/navigation';
 import React, {useState} from 'react';
 import {useForm} from 'react-hook-form';
 import {DeskSVG} from '../svgs/DeskSVG';
@@ -12,6 +12,7 @@ type RegisterData = {
 };
 
 export const RegistrationForm: React.FC = () => {
+  const router = useRouter();
   const {register, handleSubmit, formState: {errors}} = useForm<RegisterData>();
   const [serverError, setServerError] = useState<string | null>(null);
 
@@ -24,7 +25,7 @@ export const RegistrationForm: React.FC = () => {
       });
 
       if (response.ok) {
-        redirect('/login');
+        router.push('/upload');
       } else {
         const errorData = await response.json();
         setServerError(errorData.message || 'An error occurred during registration');
