@@ -8,7 +8,7 @@ const FileList = async () => {
   const session = await getServerSession(authOptions)
 
   if (!session) {
-    redirect("/signin")
+    redirect("/api/auth/signin")
   }
 
   return (

@@ -2,9 +2,11 @@ import type {Metadata} from "next";
 import {ThemeProvider} from 'next-themes';
 import {Plus_Jakarta_Sans} from "next/font/google";
 import Footer from "./components/Footer";
+import SessionWrapper from "./components/client/SessionWrapper";
 import Container from "./components/container";
 import Header from "./components/header";
 import "./globals.css";
+
 
 const fontSas = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -18,18 +20,22 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  session,
 }: Readonly<{
   children: React.ReactNode;
+  session: any;
 }>) {
   return (
     <html lang="en">
       <body className={fontSas.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Container>
-            <Header />
-            {children}
-            <Footer />
-          </Container>
+          <SessionWrapper>
+            <Container>
+              <Header />
+              {children}
+              <Footer />
+            </Container>
+          </SessionWrapper>
         </ThemeProvider>
       </body>
 

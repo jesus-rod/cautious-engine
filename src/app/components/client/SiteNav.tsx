@@ -1,11 +1,14 @@
 'use client';
 import {Moon, Sun} from 'lucide-react';
+import {useSession} from "next-auth/react";
 import {useTheme} from 'next-themes';
 import Link from "next/link";
 import {usePathname} from "next/navigation";
 import {useEffect, useState} from 'react';
+import LogoutButton from './LogoutButton';
 
-const siteRoutes = [
+
+const loggedOutRoutes = [
   {
     href: "/",
     label: "Sign up",
@@ -14,6 +17,9 @@ const siteRoutes = [
     href: "/signin",
     label: "Sign in",
   },
+];
+
+const loggedInRoutes = [
   {
     href: "/upload",
     label: "Upload",
@@ -28,6 +34,12 @@ export default function SiteNav() {
   const pathname = usePathname();
   const {theme, setTheme} = useTheme();
   const [mounted, setMounted] = useState(false);
+
+
+  const {data: session, status} = useSession()
+  const isLoggedIn = session && status === "authenticated"
+
+  const siteRoutes = isLoggedIn ? loggedInRoutes : loggedOutRoutes
 
   useEffect(() => {
     setMounted(true);
@@ -49,6 +61,11 @@ export default function SiteNav() {
             </Link>
           </li>
         ))}
+        {isLoggedIn && (
+          <li className="flex items-end">
+            <LogoutButton />
+          </li>
+        )}
         <li>
           <button
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
