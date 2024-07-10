@@ -1,5 +1,6 @@
 import {DocumentData} from '@/app/types';
 import React from 'react';
+import DeleteModelComponent from './DeleteModelComponent';
 import RunModelComponent from './RunModelComponent';
 import ShowModelComponent from './ShowModelComponent';
 
@@ -32,10 +33,13 @@ const DocumentsTable: React.FC<DocumentsTableProps> = ({data}) => {
             <td className="px-6 py-4 whitespace-nowrap text-gray-900 dark:text-gray-100"> {sizeInKb(document.filesize)}</td>
             <td className="px-6 py-4 whitespace-nowrap text-gray-900 dark:text-gray-100">{new Date(document.uploadDate).toLocaleDateString('de-DE')}</td>
             <td className="px-6 py-4 whitespace-nowrap text-gray-900 dark:text-gray-100">
-              {!document.analysisResult && <RunModelComponent id={document.id} />}
-              {document.analysisResult &&
-                <ShowModelComponent id={document.id} />
-              }
+              <div className='flex space-x-2 items-stretch'>
+                {!document.analysisResult && <RunModelComponent id={document.id} />}
+                {document.analysisResult &&
+                  <ShowModelComponent id={document.id} />
+                }
+                <DeleteModelComponent id={document.id} />
+              </div>
             </td>
           </tr>
         ))}

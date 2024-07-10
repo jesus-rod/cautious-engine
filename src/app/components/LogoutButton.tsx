@@ -13,7 +13,6 @@ const LogoutButton = () => {
     <button
       onClick={handleLogout}
       className={`text-zinc-400 dark:text-zinc-500 transition py-2 px-4
-        text-zinc-900 dark:text-zinc-100"
         "hover:text-zinc-600 dark:hover:text-zinc-300"
         }`}
     >

@@ -61,6 +61,12 @@ export class DatabaseHandler {
     });
   }
 
+  static async deleteFileById(id: string) {
+    return await prisma.fileMetadata.delete({
+      where: {id: id},
+    });
+  }
+
   static async updateFileAnalysisResult(id: string, analysisResult: string) {
     return await prisma.fileMetadata.update({
       where: {id: id},

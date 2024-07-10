@@ -21,7 +21,7 @@ export default function SiteNav() {
   const pathname = usePathname();
   const {theme, setTheme} = useTheme();
   const [mounted, setMounted] = useState(false);
-  const {data: session, status} = useSession();
+  const {status} = useSession();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -35,7 +35,7 @@ export default function SiteNav() {
     return <nav>
       <ul className="flex gap-x-5 text-[16px] font-bold">
         {/* Skeleton loader */}
-        {[1, 2].map((i) => (
+        {[1, 2, 3].map((i) => (
           <li key={i} className="w-20 h-8 bg-gray-200 dark:bg-gray-700 rounded animate-pulse"></li>
         ))}
       </ul>
@@ -52,10 +52,10 @@ export default function SiteNav() {
           <li key={siteRoute.href} className="flex items-end">
             <Link
               href={siteRoute.href}
-              className={`text-zinc-400 dark:text-zinc-500 transition py-2 px-4 ${pathname === siteRoute.href
-                  ? "text-zinc-900 dark:text-zinc-100"
-                  : "hover:text-zinc-600 dark:hover:text-zinc-300"
-                }`}
+              className={`py-2 px-4 transition 
+                ${pathname === siteRoute.href
+                  ? "text-zinc-900 dark:text-zinc-300"
+                  : "text-zinc-400 dark:text-zinc-500 hover:text-zinc-600 dark:hover:text-zinc-300"}`}
             >
               {siteRoute.label}
             </Link>

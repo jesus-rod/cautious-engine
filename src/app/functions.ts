@@ -43,6 +43,17 @@ export const processDocument = async (id: string): Promise<Response> => {
   });
 }
 
+export const deleteDocument = async (id: string): Promise<Response> => {
+  return await fetch(`api/documents/${id}/delete`, {
+    method: 'POST',
+    body: JSON.stringify({id}),
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  });
+
+}
+
 // 🔑 Auth Related Queries
 export const registerUser = async (data: RegisterData): Promise<Response> => {
   return await fetch('/api/auth/register', {
