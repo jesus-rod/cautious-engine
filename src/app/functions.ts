@@ -27,7 +27,7 @@ export const uploadFile = async (file: File): Promise<Response> => {
   const formData = new FormData();
   formData.append('file', file);
 
-  return await fetch('/api/upload', {
+  return await fetch(`${baseUrl}/api/upload`, {
     method: 'POST',
     body: formData
   });

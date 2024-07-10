@@ -1,20 +1,27 @@
-'use server'
-import {uploadFile} from '@/app/functions'
+'use server';
+import {uploadFile} from '@/app/functions';
+import {revalidatePath} from 'next/cache';
 
-export async function uploadAction(file: File | null, formData: FormData) {
-  console.log("server action called")
+type FormState = {
+  message: string;
+};
+
+export async function uploadAction(formState: FormState, formData: FormData) {
+  const file = formData.get('file') as File;
   if (!file) {
-    return {error: 'No file selected'}
+    return {message: 'No file selected'}
   }
 
   try {
     const response = await uploadFile(file)
     if (response.ok) {
+      revalidatePath('/documents');
       return {message: 'File uploaded successfully.'}
     } else {
-      return {error: `File upload failed: HTTP ${response.status}`}
+      return {message: `File upload failed: HTTP ${response.status}`}
     }
   } catch (error) {
-    return {error: error instanceof Error ? error.message : 'An unknown error occurred.'}
+    console.log(error);
+    return {message: 'An unknown error occurred.'}
   }
 }
