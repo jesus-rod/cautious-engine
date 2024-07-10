@@ -1,5 +1,6 @@
 'use client';
 
+import {useRouter} from "next/navigation";
 import {useState} from "react";
 import {deleteDocument} from "../functions";
 import ConfirmationAlert from "./ConfirmationAlert";
@@ -10,12 +11,14 @@ interface DeleteModelProps {
 
 const DeleteModelComponent: React.FC<DeleteModelProps> = ({id}) => {
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const router = useRouter();
 
   const handleDelete = async () => {
     setIsButtonDisabled(true);
     try {
       const response = await deleteDocument(id);
       if (response.ok) {
+        router.refresh();
         console.log('Document deleted successfully');
       } else {
         console.error('Error deleting document: HTTP', response.status);

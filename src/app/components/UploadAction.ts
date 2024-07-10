@@ -21,7 +21,6 @@ export async function uploadAction(formState: FormState, formData: FormData) {
       return {message: `File upload failed: HTTP ${response.status}`}
     }
   } catch (error) {
-    console.log(error);
     return {message: 'An unknown error occurred.'}
   }
 }
