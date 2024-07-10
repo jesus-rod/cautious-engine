@@ -10,7 +10,6 @@ const handlePostRequest = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const file = await DatabaseHandler.getFileById(String(id));
     const topics = (await DatabaseHandler.getTopics()).map((topic) => topic.name);
-    console.log('Topics:', topics)
 
     if (!file) {
       res.status(404).json({message: 'File not found'});

@@ -20,7 +20,7 @@ const RunModelComponent: React.FC<RunModelProps> = ({id}) => {
 
       if (response.ok) {
         setDidModelRunSuccessfully(true);
-        buttonMessage = 'Show Document';
+        buttonMessage = 'Show Analysis';
       } else {
         console.error('Error running topic modeling: HTTP', response.status);
       }

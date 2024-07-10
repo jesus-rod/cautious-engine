@@ -17,7 +17,7 @@ export const RegistrationForm: React.FC = () => {
       const response = await registerUser(data);
 
       if (response.ok) {
-        router.push('/upload');
+        router.push('/signin');
       } else {
         const errorData = await response.json();
         setServerError(errorData.message || 'An error occurred during registration');

@@ -9,13 +9,11 @@ interface DeleteModelProps {
 
 const DeleteModelComponent: React.FC<DeleteModelProps> = ({id}) => {
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
-  const [didModelDeleteSuccessfully, setDidModelDeleteSuccessfully] = useState(false);
   const handleDelete = async () => {
     try {
       const response = await deleteDocument(id)
 
       if (response.ok) {
-        setDidModelDeleteSuccessfully(true);
         console.log('Document deleted successfully');
       } else {
         console.error('Error deleting document: HTTP', response.status);

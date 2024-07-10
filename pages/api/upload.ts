@@ -4,6 +4,15 @@ import path from 'path';
 import {DatabaseHandler} from './DatabaseHandler';
 import {FileHandler} from './FileHandler';
 
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
+
+const sanitizeFilename = (filename: string) => {
+  return filename.replace(/[^a-z0-9.\-_]/gi, '_').toLowerCase();
+};
 
 const handleFileUpload = async (req: NextApiRequest, res: NextApiResponse) => {
   const options: Options = {
@@ -25,8 +34,13 @@ const handleFileUpload = async (req: NextApiRequest, res: NextApiResponse) => {
     const {files} = await FileHandler.parseForm(req, options);
     const file = files.file as File[];
     const firstFile = file[0];
-    const newFilename = await FileHandler.saveFile(firstFile);
 
+    if (!firstFile.originalFilename) {
+      return res.status(400).json({message: 'No file uploaded'});
+    }
+
+    const sanitizedFilename = sanitizeFilename(firstFile.originalFilename);
+    const newFilename = await FileHandler.saveFile({...firstFile, originalFilename: sanitizedFilename});
     await DatabaseHandler.saveFileMetadata(newFilename, firstFile.size);
 
     res.status(200).json({message: 'File uploaded successfully', filename: newFilename});

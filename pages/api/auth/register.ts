@@ -9,9 +9,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     try {
       const hashedPassword = await bcrypt.hash(password, 10)
-      console.log('Creating user:', name, email, hashedPassword)
       const user = await DatabaseHandler.createUser(name, email, hashedPassword)
-      console.log('User CREATED:', user)
       res.status(201).json({message: 'User created successfully', user: {id: user.id, name: user.name, email: user.email}})
     } catch (error) {
       console.error('Error creating user:', error)
