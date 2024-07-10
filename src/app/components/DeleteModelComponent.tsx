@@ -2,6 +2,7 @@
 
 import {useState} from "react";
 import {deleteDocument} from "../functions";
+import ConfirmationAlert from "./ConfirmationAlert";
 
 interface DeleteModelProps {
   id: string;
@@ -9,10 +10,11 @@ interface DeleteModelProps {
 
 const DeleteModelComponent: React.FC<DeleteModelProps> = ({id}) => {
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
-  const handleDelete = async () => {
-    try {
-      const response = await deleteDocument(id)
 
+  const handleDelete = async () => {
+    setIsButtonDisabled(true);
+    try {
+      const response = await deleteDocument(id);
       if (response.ok) {
         console.log('Document deleted successfully');
       } else {
@@ -26,11 +28,12 @@ const DeleteModelComponent: React.FC<DeleteModelProps> = ({id}) => {
 
   return (
     <div className="flex items-center h-full">
-      <form>
+      <ConfirmationAlert onConfirm={handleDelete}>
         <button
-          onClick={handleDelete}
+          type="button"
           disabled={isButtonDisabled}
-          className="py-3 px-3 bg-red-500 hover:bg-red-700 text-white font-bold rounded cursor-pointer flex items-center justify-center">
+          className="py-3 px-3 bg-red-500 hover:bg-red-700 text-white font-bold rounded cursor-pointer flex items-center justify-center"
+        >
           {isButtonDisabled ? (
             <svg className="animate-spin h-5 w-5 mr-3" viewBox="0 0 24 24">
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
@@ -42,11 +45,9 @@ const DeleteModelComponent: React.FC<DeleteModelProps> = ({id}) => {
             </svg>
           )}
         </button>
-      </form>
+      </ConfirmationAlert>
     </div>
   );
 }
 
 export default DeleteModelComponent;
-
-
