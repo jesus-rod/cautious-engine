@@ -1,15 +1,14 @@
 export type DocumentListResponse = {
   data: DocumentData[];
   pagination: PaginationData;
-}
+};
 
 export type PaginationData = {
   limit: number;
   total: number;
   totalPages: number;
   currentPage: number;
-
-}
+};
 
 export type DocumentData = {
   id: string;
@@ -17,7 +16,7 @@ export type DocumentData = {
   filesize: number;
   uploadDate: string;
   analysisResult: string;
-}
+};
 
 export type RegisterData = {
   name: string;
@@ -33,4 +32,4 @@ export type User = {
   id: string;
   name: string | null;
   email: string | null;
-}
+};

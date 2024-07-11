@@ -1,11 +1,11 @@
-import OpenAI from "openai";
+import OpenAI from 'openai';
 
 export const openai = new OpenAI({
   apiKey: process.env['OPENAI_API_KEY'],
 });
 
 export const createPrompt = (fileContents: string, topics: string[]) => {
-  const topicsString = topics.map((topic) => `"${topic}"`).join(", ");
+  const topicsString = topics.map((topic) => `"${topic}"`).join(', ');
   return `1. Given the following text: ${fileContents}
   2. Summarize the main topics and describe the relationships between different topics in detail.
   3. Consider the existing topics: ${topicsString}.
@@ -18,16 +18,19 @@ export const createPrompt = (fileContents: string, topics: string[]) => {
     - "summary": a brief summary of what the text is about.
   7. Ensure that related topics are accurately connected based on their contextual usage in the text.
   8. Validate that all relevant topics and their relationships are captured in the response.`;
-}
+};
 
 export class LLMService {
-  static async runAlgorithm(fileContents: string, topics: string[]): Promise<{topics: string[]; relationships: string[][];} | null> {
+  static async runAlgorithm(
+    fileContents: string,
+    topics: string[]
+  ): Promise<{ topics: string[]; relationships: string[][] } | null> {
     const params: OpenAI.Chat.ChatCompletionCreateParams = {
       messages: [
         {
           role: 'user',
           content: createPrompt(fileContents, topics),
-        }
+        },
       ],
       model: process.env['OPENAI_MODEL'] ?? 'gpt-3.5-turbo',
       max_tokens: 4000,
@@ -35,9 +38,11 @@ export class LLMService {
     };
 
     try {
-      const response: OpenAI.Chat.ChatCompletion = await openai.chat.completions.create(params);
-      const messageContent: string | null = response.choices[0].message.content?.trim() ?? "";
-      const output = JSON.parse(messageContent ?? "");
+      const response: OpenAI.Chat.ChatCompletion =
+        await openai.chat.completions.create(params);
+      const messageContent: string | null =
+        response.choices[0].message.content?.trim() ?? '';
+      const output = JSON.parse(messageContent ?? '');
       return output;
     } catch (error) {
       console.error('Error calling OpenAI API:', error);

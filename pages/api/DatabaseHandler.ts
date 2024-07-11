@@ -1,6 +1,5 @@
-import {User} from '@/app/types';
-import {PrismaClient} from '@prisma/client';
-
+import { User } from '@/app/types';
+import { PrismaClient } from '@prisma/client';
 
 // Use the Singleton pattern to avoid multiple DB instances
 declare global {
@@ -10,14 +9,16 @@ declare global {
 const prisma = global.prisma || new PrismaClient();
 if (process.env.NODE_ENV !== 'production') global.prisma = prisma;
 
-
 export class DatabaseHandler {
-
   static getPrismaClient() {
     return prisma;
   }
 
-  static async createUser(name: string, email: string, password: string): Promise<User> {
+  static async createUser(
+    name: string,
+    email: string,
+    password: string
+  ): Promise<User> {
     try {
       const user = await prisma.user.create({
         data: {
@@ -38,7 +39,10 @@ export class DatabaseHandler {
     }
   }
 
-  static async saveFileMetadata(filename: string, filesize: number): Promise<void> {
+  static async saveFileMetadata(
+    filename: string,
+    filesize: number
+  ): Promise<void> {
     await prisma.fileMetadata.create({
       data: {
         filename,
@@ -60,7 +64,7 @@ export class DatabaseHandler {
       take: limit,
     });
 
-    const fileCount = await prisma.fileMetadata.count()
+    const fileCount = await prisma.fileMetadata.count();
 
     return {
       data: paginatedData,
@@ -73,22 +77,21 @@ export class DatabaseHandler {
     };
   }
 
-
   static async getFileById(id: string) {
     return await prisma.fileMetadata.findUnique({
-      where: {id: id},
+      where: { id: id },
     });
   }
 
   static async deleteFileById(id: string) {
     return await prisma.fileMetadata.delete({
-      where: {id: id},
+      where: { id: id },
     });
   }
 
   static async updateFileAnalysisResult(id: string, analysisResult: string) {
     return await prisma.fileMetadata.update({
-      where: {id: id},
+      where: { id: id },
       data: {
         analysisResult: analysisResult,
       },

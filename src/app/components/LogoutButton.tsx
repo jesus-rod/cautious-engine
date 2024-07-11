@@ -1,14 +1,14 @@
-'use client'
-import {signOut} from 'next-auth/react'
-import {useRouter} from 'next/navigation'
+'use client';
+import { signOut } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 const LogoutButton = () => {
-  const router = useRouter()
+  const router = useRouter();
 
   const handleLogout = async () => {
-    const result = await signOut({redirect: false, callbackUrl: "/"})
-    router.push(result.url)
-  }
+    const result = await signOut({ redirect: false, callbackUrl: '/' });
+    router.push(result.url);
+  };
   return (
     <button
       onClick={handleLogout}
@@ -18,7 +18,7 @@ const LogoutButton = () => {
     >
       Log out
     </button>
-  )
-}
+  );
+};
 
-export default LogoutButton
+export default LogoutButton;

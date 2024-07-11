@@ -1,8 +1,8 @@
-import {File, Options} from 'formidable';
-import {NextApiRequest, NextApiResponse} from 'next';
+import { File, Options } from 'formidable';
+import { NextApiRequest, NextApiResponse } from 'next';
 import path from 'path';
-import {DatabaseHandler} from './DatabaseHandler';
-import {FileHandler} from './FileHandler';
+import { DatabaseHandler } from './DatabaseHandler';
+import { FileHandler } from './FileHandler';
 
 export const config = {
   api: {
@@ -20,7 +20,7 @@ const handleFileUpload = async (req: NextApiRequest, res: NextApiResponse) => {
     keepExtensions: true,
     maxFileSize: 2 * 1024 * 1024, // 2MB
     allowEmptyFiles: false,
-    filter: ({originalFilename, mimetype}) => {
+    filter: ({ originalFilename, mimetype }) => {
       const allowedExtensions = ['.txt'];
       const fileExtension = path.extname(originalFilename || '').toLowerCase();
       const isAllowedExtension = allowedExtensions.includes(fileExtension);
@@ -31,29 +31,37 @@ const handleFileUpload = async (req: NextApiRequest, res: NextApiResponse) => {
   };
 
   try {
-    const {files} = await FileHandler.parseForm(req, options);
+    const { files } = await FileHandler.parseForm(req, options);
     const file = files.file as File[];
     const firstFile = file[0];
 
     if (!firstFile.originalFilename) {
-      return res.status(400).json({message: 'No file uploaded'});
+      return res.status(400).json({ message: 'No file uploaded' });
     }
 
     const sanitizedFilename = sanitizeFilename(firstFile.originalFilename);
-    const newFilename = await FileHandler.saveFile({...firstFile, originalFilename: sanitizedFilename});
+    const newFilename = await FileHandler.saveFile({
+      ...firstFile,
+      originalFilename: sanitizedFilename,
+    });
     await DatabaseHandler.saveFileMetadata(newFilename, firstFile.size);
 
-    res.status(200).json({message: 'File uploaded successfully', filename: newFilename});
+    res
+      .status(200)
+      .json({ message: 'File uploaded successfully', filename: newFilename });
   } catch (err) {
     console.error(err);
-    res.status(500).json({message: 'File upload or metadata saving failed'});
+    res.status(500).json({ message: 'File upload or metadata saving failed' });
   }
 };
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   if (req.method === 'POST') {
     await handleFileUpload(req, res);
   } else {
-    res.status(405).json({message: 'Method not allowed'});
+    res.status(405).json({ message: 'Method not allowed' });
   }
 }

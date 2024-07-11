@@ -1,4 +1,3 @@
-
 import {
   AlertDialog,
   AlertDialogAction,
@@ -9,8 +8,8 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
-import React from "react";
+} from '@/components/ui/alert-dialog';
+import React from 'react';
 
 interface ConfirmationAlertProps {
   onConfirm: () => void;
@@ -23,19 +22,23 @@ const ConfirmationAlert: React.FC<ConfirmationAlertProps> = ({
 }) => {
   return (
     <AlertDialog>
-      <AlertDialogTrigger asChild>
-        {children}
-      </AlertDialogTrigger>
+      <AlertDialogTrigger asChild>{children}</AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
           <AlertDialogDescription>
-            This action cannot be undone. This will permanently delete this file and its metadata.
+            This action cannot be undone. This will permanently delete this file
+            and its metadata.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction className="bg-red-600 text-white hover:bg-red-700 dark:bg-red-600 dark:text-white dark:bg-red-700" onClick={onConfirm}>Confirm</AlertDialogAction>
+          <AlertDialogAction
+            className="bg-red-600 text-white hover:bg-red-700 dark:bg-red-600 dark:text-white dark:bg-red-700"
+            onClick={onConfirm}
+          >
+            Confirm
+          </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

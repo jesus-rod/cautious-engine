@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import { useState } from 'react';
 
 interface RequestState<T> {
   data: T | null;
@@ -24,21 +24,30 @@ export function useApiRequest<T>() {
     onSuccess?: (data: T) => void,
     onError?: (error: Error) => void
   ) => {
-    setState(prev => ({...prev, isLoading: true, error: null}));
+    setState((prev) => ({ ...prev, isLoading: true, error: null }));
     try {
       const response = await apiCall();
       if (response.ok) {
-        setState({data: response.data || null, isLoading: false, error: null});
+        setState({
+          data: response.data || null,
+          isLoading: false,
+          error: null,
+        });
         onSuccess && onSuccess(response.data as T);
       } else {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
-      setState({data: null, isLoading: false, error: new Error(errorMessage)});
+      const errorMessage =
+        error instanceof Error ? error.message : 'An unknown error occurred';
+      setState({
+        data: null,
+        isLoading: false,
+        error: new Error(errorMessage),
+      });
       onError && onError(new Error(errorMessage));
     }
   };
 
-  return {...state, execute};
+  return { ...state, execute };
 }

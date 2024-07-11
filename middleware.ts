@@ -1,12 +1,11 @@
-import {withAuth} from "next-auth/middleware"
+import { withAuth } from 'next-auth/middleware';
 
-export default withAuth(
-  function middleware(req) {},
-  {
-    callbacks: {
-      authorized: ({token}) => !!token
-    },
-  }
-)
+export default withAuth(function middleware(req) {}, {
+  callbacks: {
+    authorized: ({ token }) => !!token,
+  },
+});
 
-export const config = {matcher: ["/uploads", "/documents", "/documents/:path*"]}
+export const config = {
+  matcher: ['/uploads', '/documents', '/documents/:path*'],
+};

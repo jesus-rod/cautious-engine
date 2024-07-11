@@ -1,8 +1,8 @@
 'use client';
 
-import {useTheme} from 'next-themes';
-import {useEffect, useRef} from 'react';
-import {Network} from 'vis-network';
+import { useTheme } from 'next-themes';
+import { useEffect, useRef } from 'react';
+import { Network } from 'vis-network';
 
 const GraphVisualization = ({ data }) => {
   const graphRef = useRef(null);
@@ -11,22 +11,22 @@ const GraphVisualization = ({ data }) => {
 
   useEffect(() => {
     const { topics, relationships } = data;
-    const nodes = topics.map(topic => ({
+    const nodes = topics.map((topic) => ({
       id: topic.name,
       label: topic.name,
       value: topic.occurrences * 10,
       font: {
         size: 16,
-        color: isDarkTheme ? 'white' : 'black'
+        color: isDarkTheme ? 'white' : 'black',
       },
       scaling: {
         min: 10,
-        max: 30
-      }
+        max: 30,
+      },
     }));
 
     let edges = [];
-    relationships.forEach(rel => {
+    relationships.forEach((rel) => {
       edges.push({
         from: rel.from,
         to: rel.to,
@@ -46,7 +46,7 @@ const GraphVisualization = ({ data }) => {
         enabled: true,
       },
       nodes: {
-        shape: 'dot', 
+        shape: 'dot',
         size: 20,
         font: {
           size: 16,
@@ -54,9 +54,9 @@ const GraphVisualization = ({ data }) => {
       },
       edges: {
         color: {
-          color: "#2b7ce9",
-          highlight: "#848484"
-        }
+          color: '#2b7ce9',
+          highlight: '#848484',
+        },
       },
     };
 

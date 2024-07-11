@@ -1,6 +1,6 @@
-import Image from "next/image";
-import Link from "next/link";
-import SiteNav from "./SiteNav";
+import Image from 'next/image';
+import Link from 'next/link';
+import SiteNav from './SiteNav';
 
 export default function Header() {
   return (

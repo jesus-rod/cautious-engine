@@ -1,9 +1,8 @@
-import {PAGINATION_LIMIT} from '@/lib/constants';
-import {NextApiRequest, NextApiResponse} from 'next';
-import {DatabaseHandler} from '../DatabaseHandler';
+import { PAGINATION_LIMIT } from '@/lib/constants';
+import { NextApiRequest, NextApiResponse } from 'next';
+import { DatabaseHandler } from '../DatabaseHandler';
 
 const handleGetRequest = async (req: NextApiRequest, res: NextApiResponse) => {
-
   const page = parseInt(req.query.page as string) || 1;
   const limit = parseInt(req.query.limit as string) || PAGINATION_LIMIT;
 
@@ -15,14 +14,17 @@ const handleGetRequest = async (req: NextApiRequest, res: NextApiResponse) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({message: 'Error retrieving files'});
+    res.status(500).json({ message: 'Error retrieving files' });
   }
 };
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+): Promise<void> {
   if (req.method === 'GET') {
     await handleGetRequest(req, res);
   } else {
-    res.status(405).json({message: 'Method not allowed'});
+    res.status(405).json({ message: 'Method not allowed' });
   }
 }
