@@ -1,8 +1,8 @@
 import { File, Options } from 'formidable';
 import { NextApiRequest, NextApiResponse } from 'next';
 import path from 'path';
-import { DatabaseHandler } from './DatabaseHandler';
-import { FileHandler } from './FileHandler';
+import { DatabaseHandler } from '../DatabaseHandler';
+import { FileHandler } from '../FileHandler';
 
 export const config = {
   api: {

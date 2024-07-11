@@ -2,7 +2,17 @@ import bcrypt from 'bcrypt';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { DatabaseHandler } from '../DatabaseHandler';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+interface RegisterResponse {
+  message: string;
+  user?: {
+    id: string;
+    name: string;
+    email: string;
+  };
+  error?: string;
+}
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse<RegisterResponse>): Promise<void> {
   if (req.method === 'POST') {
     const { name, email, password } = req.body as {
       name: string;

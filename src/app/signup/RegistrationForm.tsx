@@ -5,7 +5,7 @@ import { RegisterData } from '@/app/types';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { DeskSVG } from './svgs/DeskSVG';
+import { DeskSVG } from '@/components/svgs/DeskSVG';
 
 export const RegistrationForm: React.FC = () => {
   const router = useRouter();
