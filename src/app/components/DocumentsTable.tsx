@@ -6,9 +6,10 @@ import ShowModelComponent from './ShowModelComponent';
 
 interface DocumentsTableProps {
   data: DocumentData[];
+  startIndex: number;
 }
 
-const DocumentsTable: React.FC<DocumentsTableProps> = ({data}) => {
+const DocumentsTable: React.FC<DocumentsTableProps> = ({data, startIndex}) => {
 
   const sizeInKb = (size: number): string => {
     return (size / 1024).toFixed(2) + ' KB';
@@ -28,7 +29,7 @@ const DocumentsTable: React.FC<DocumentsTableProps> = ({data}) => {
       <tbody className="bg-white dark:bg-gray-950 divide-y divide-gray-200 dark:divide-gray-700">
         {data.map((document, index) => (
           <tr key={document.id}>
-            <td className="px-6 py-4 whitespace-nowrap text-gray-900 dark:text-gray-100">{index + 1}</td>
+            <td className="px-6 py-4 whitespace-nowrap text-gray-900 dark:text-gray-100">{(startIndex + index + 1)}</td>
             <td className="px-6 py-4 whitespace-nowrap text-gray-900 dark:text-gray-100">{document.filename}</td>
             <td className="px-6 py-4 whitespace-nowrap text-gray-900 dark:text-gray-100"> {sizeInKb(document.filesize)}</td>
             <td className="px-6 py-4 whitespace-nowrap text-gray-900 dark:text-gray-100">{new Date(document.uploadDate).toLocaleDateString('de-DE')}</td>

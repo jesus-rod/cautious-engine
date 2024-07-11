@@ -1,16 +1,18 @@
-import {DocumentData, LoginData, RegisterData} from "@/app/types";
+import {DocumentData, DocumentListResponse, LoginData, RegisterData} from "@/app/types";
 import {signIn, SignInResponse} from "next-auth/react";
 
 const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
 
 // 📁 Modeling Related Queries
-export async function fetchDocumentList(): Promise<DocumentData[]> {
-  const response = await fetch(`${baseUrl}/api/documents`);
+export async function fetchDocumentList(page: number = 1, limit: number = 15): Promise<DocumentListResponse> {
+  const fetchUrl = `${baseUrl}/api/documents?page=${page}&limit=${limit}`
+  const response = await fetch(fetchUrl);
+
   if (!response.ok) {
     throw new Error('Failed to fetch data')
   }
-  const data: DocumentData[] = await response.json();
-  return data
+  const documentList: DocumentListResponse = await response.json();
+  return documentList;
 }
 
 export async function fetchDocumentDetail(documentId: string): Promise<DocumentData | null> {

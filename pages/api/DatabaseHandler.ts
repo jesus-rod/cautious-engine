@@ -49,13 +49,30 @@ export class DatabaseHandler {
     });
   }
 
-  static async getFiles() {
-    return await prisma.fileMetadata.findMany({
+  static async getFiles(page: number, limit: number) {
+    const skip = (page - 1) * limit;
+
+    const paginatedData = await prisma.fileMetadata.findMany({
       orderBy: {
         uploadDate: 'desc',
       },
+      skip: skip,
+      take: limit,
     });
+
+    const fileCount = await prisma.fileMetadata.count()
+
+    return {
+      data: paginatedData,
+      pagination: {
+        limit: limit,
+        total: fileCount,
+        totalPages: Math.ceil(fileCount / limit),
+        currentPage: page,
+      },
+    };
   }
+
 
   static async getFileById(id: string) {
     return await prisma.fileMetadata.findUnique({

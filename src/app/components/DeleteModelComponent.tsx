@@ -1,5 +1,6 @@
 'use client';
 
+import {useApiRequest} from "@/lib/useApiRequest";
 import {useRouter} from "next/navigation";
 import {useState} from "react";
 import {deleteDocument} from "../functions";
@@ -13,19 +14,19 @@ const DeleteModelComponent: React.FC<DeleteModelProps> = ({id}) => {
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const router = useRouter();
 
+  const {execute} = useApiRequest<Response>();
+
   const handleDelete = async () => {
     setIsButtonDisabled(true);
-    try {
-      const response = await deleteDocument(id);
-      if (response.ok) {
+    await execute(
+      () => deleteDocument(id),
+      () => {
         router.refresh();
-        console.log('Document deleted successfully');
-      } else {
-        console.error('Error deleting document: HTTP', response.status);
+      },
+      (error) => {
+        console.error('Error deleting document', error);
       }
-    } catch (error) {
-      console.error('Error deleting document:', error);
-    }
+    );
     setIsButtonDisabled(false);
   };
 

@@ -1,6 +1,7 @@
 'use client';
 
 import {processDocument} from '@/app/functions';
+import {useApiRequest} from '@/lib/useApiRequest';
 import React, {useState} from 'react';
 import ShowModelComponent from './ShowModelComponent';
 
@@ -13,31 +14,29 @@ const RunModelComponent: React.FC<RunModelProps> = ({id}) => {
   const [didModelRunSuccessfully, setDidModelRunSuccessfully] = useState(false);
   let buttonMessage = 'Run Topic Modeling';
 
-  const runTopicModeling = async () => {
-    setIsButtonDisabled(true);
-    try {
-      const response = await processDocument(id);
+  const {execute} = useApiRequest<Response>();
 
-      if (response.ok) {
+  const handleProcessDocument = async () => {
+    setIsButtonDisabled(true);
+    await execute(
+      () => processDocument(id),
+      () => {
         setDidModelRunSuccessfully(true);
         buttonMessage = 'Show Analysis';
-      } else {
-        console.error('Error running topic modeling: HTTP', response.status);
+      },
+      (error) => {
+        console.error('Error processing document:', error);
       }
-    } catch (error) {
-      console.error('Error running topic modeling:', error);
-    }
-
+    );
     setIsButtonDisabled(false);
   };
-
 
   return didModelRunSuccessfully ? (
     <ShowModelComponent id={id} />
   ) : (
     <div className="flex items-center h-full">
       <button
-        onClick={runTopicModeling}
+        onClick={handleProcessDocument}
         disabled={isButtonDisabled}
         className="py-3 px-4 bg-blue-500 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-800 text-white font-bold rounded disabled:opacity-50"
       >
