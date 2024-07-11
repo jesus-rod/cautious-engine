@@ -8,9 +8,7 @@ const handlePostRequest = async (req: NextApiRequest, res: NextApiResponse) => {
 
   try {
     const file = await DatabaseHandler.getFileById(String(id));
-    const topics = (await DatabaseHandler.getTopics()).map(
-      (topic) => topic.name
-    );
+    const topics = (await DatabaseHandler.getTopics()).map((topic) => topic.name);
 
     if (!file) {
       res.status(404).json({ message: 'File not found' });
@@ -29,10 +27,7 @@ const handlePostRequest = async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     // Update the document with the processed text
-    const updatedFile = await DatabaseHandler.updateFileAnalysisResult(
-      String(id),
-      JSON.stringify(processedData)
-    );
+    const updatedFile = await DatabaseHandler.updateFileAnalysisResult(String(id), JSON.stringify(processedData));
 
     res.status(200).json(updatedFile);
   } catch (error) {
@@ -41,10 +36,7 @@ const handlePostRequest = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-): Promise<void> {
+export default async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
   if (req.method === 'POST') {
     await handlePostRequest(req, res);
   } else {

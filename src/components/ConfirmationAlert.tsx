@@ -16,27 +16,18 @@ interface ConfirmationAlertProps {
   children: React.ReactNode;
 }
 
-const ConfirmationAlert: React.FC<ConfirmationAlertProps> = ({
-  onConfirm,
-  children,
-}) => {
+const ConfirmationAlert: React.FC<ConfirmationAlertProps> = ({ onConfirm, children }) => {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>{children}</AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-          <AlertDialogDescription>
-            This action cannot be undone. This will permanently delete this file
-            and its metadata.
-          </AlertDialogDescription>
+          <AlertDialogDescription>This action cannot be undone. This will permanently delete this file and its metadata.</AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction
-            className="bg-red-600 text-white hover:bg-red-700 dark:bg-red-600 dark:text-white dark:bg-red-700"
-            onClick={onConfirm}
-          >
+          <AlertDialogAction className="bg-red-600 text-white hover:bg-red-700 dark:bg-red-600 dark:text-white dark:bg-red-700" onClick={onConfirm}>
             Confirm
           </AlertDialogAction>
         </AlertDialogFooter>

@@ -2,10 +2,7 @@ import bcrypt from 'bcrypt';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { DatabaseHandler } from '../DatabaseHandler';
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     const { name, email, password } = req.body as {
       name: string;
@@ -15,11 +12,7 @@ export default async function handler(
 
     try {
       const hashedPassword = await bcrypt.hash(password, 10);
-      const user = await DatabaseHandler.createUser(
-        name,
-        email,
-        hashedPassword
-      );
+      const user = await DatabaseHandler.createUser(name, email, hashedPassword);
       res.status(201).json({
         message: 'User created successfully',
         user: { id: user.id, name: user.name, email: user.email },

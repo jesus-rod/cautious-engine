@@ -19,11 +19,7 @@ export function useApiRequest<T>() {
     error: null,
   });
 
-  const execute = async (
-    apiCall: () => Promise<ApiResponse<T>>,
-    onSuccess?: (data: T) => void,
-    onError?: (error: Error) => void
-  ) => {
+  const execute = async (apiCall: () => Promise<ApiResponse<T>>, onSuccess?: (data: T) => void, onError?: (error: Error) => void) => {
     setState((prev) => ({ ...prev, isLoading: true, error: null }));
     try {
       const response = await apiCall();
@@ -38,8 +34,7 @@ export function useApiRequest<T>() {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
     } catch (error) {
-      const errorMessage =
-        error instanceof Error ? error.message : 'An unknown error occurred';
+      const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
       setState({
         data: null,
         isLoading: false,

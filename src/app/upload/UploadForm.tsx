@@ -19,9 +19,7 @@ const UploadForm = () => {
     formRef.current?.reset();
   }
 
-  const handleNavigation = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
+  const handleNavigation = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     setTimeout(() => {
       router.push('/documents');
@@ -40,10 +38,7 @@ const UploadForm = () => {
       <UploadButton />
       {shouldShowRedirectLink && (
         <p className="mt-4 text-zinc-700 dark:text-zinc-300">
-          <button
-            onClick={handleNavigation}
-            className="text-blue-500 dark:text-blue-400 hover:underline"
-          >
+          <button onClick={handleNavigation} className="text-blue-500 dark:text-blue-400 hover:underline">
             {message} <b>Click here</b> to see your documents.
           </button>
         </p>

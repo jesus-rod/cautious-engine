@@ -1,18 +1,10 @@
-import {
-  DocumentData,
-  DocumentListResponse,
-  LoginData,
-  RegisterData,
-} from '@/app/types';
+import { DocumentData, DocumentListResponse, LoginData, RegisterData } from '@/app/types';
 import { signIn, SignInResponse } from 'next-auth/react';
 
 const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
 
 // 📁 Modeling Related Queries
-export async function fetchDocumentList(
-  page: number = 1,
-  limit: number = 15
-): Promise<DocumentListResponse> {
+export async function fetchDocumentList(page: number = 1, limit: number = 15): Promise<DocumentListResponse> {
   const fetchUrl = `${baseUrl}/api/documents?page=${page}&limit=${limit}`;
   const response = await fetch(fetchUrl);
 
@@ -23,9 +15,7 @@ export async function fetchDocumentList(
   return documentList;
 }
 
-export async function fetchDocumentDetail(
-  documentId: string
-): Promise<DocumentData | null> {
+export async function fetchDocumentDetail(documentId: string): Promise<DocumentData | null> {
   const response = await fetch(`${baseUrl}/api/documents/${documentId}`, {
     next: { revalidate: 1 },
   });
@@ -76,9 +66,7 @@ export const registerUser = async (data: RegisterData): Promise<Response> => {
   });
 };
 
-export const loginUser = async (
-  data: LoginData
-): Promise<SignInResponse | undefined> => {
+export const loginUser = async (data: LoginData): Promise<SignInResponse | undefined> => {
   return await signIn('credentials', {
     redirect: false,
     email: data.email,

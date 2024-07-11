@@ -14,8 +14,7 @@ const DocumentsList = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const documentList: DocumentListResponse =
-        await fetchDocumentList(currentPage);
+      const documentList: DocumentListResponse = await fetchDocumentList(currentPage);
       setData(documentList.data);
       setPagination(documentList.pagination);
     };
@@ -28,17 +27,8 @@ const DocumentsList = () => {
 
   return (
     <div>
-      <DocumentsTable
-        data={data}
-        startIndex={PAGINATION_LIMIT * (currentPage - 1)}
-      />
-      {pagination && (
-        <Pagination
-          currentPage={currentPage}
-          totalPages={pagination.totalPages}
-          onPageChange={handlePageChange}
-        />
-      )}
+      <DocumentsTable data={data} startIndex={PAGINATION_LIMIT * (currentPage - 1)} />
+      {pagination && <Pagination currentPage={currentPage} totalPages={pagination.totalPages} onPageChange={handlePageChange} />}
     </div>
   );
 };

@@ -24,10 +24,7 @@ export const authOptions: NextAuthOptions = {
           where: { email: credentials.email },
         });
 
-        if (
-          user &&
-          (await bcrypt.compare(credentials.password, user.password))
-        ) {
+        if (user && (await bcrypt.compare(credentials.password, user.password))) {
           return { id: user.id, name: user.name, email: user.email };
         } else {
           return null;

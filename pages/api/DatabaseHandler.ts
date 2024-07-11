@@ -14,11 +14,7 @@ export class DatabaseHandler {
     return prisma;
   }
 
-  static async createUser(
-    name: string,
-    email: string,
-    password: string
-  ): Promise<User> {
+  static async createUser(name: string, email: string, password: string): Promise<User> {
     try {
       const user = await prisma.user.create({
         data: {
@@ -39,10 +35,7 @@ export class DatabaseHandler {
     }
   }
 
-  static async saveFileMetadata(
-    filename: string,
-    filesize: number
-  ): Promise<void> {
+  static async saveFileMetadata(filename: string, filesize: number): Promise<void> {
     await prisma.fileMetadata.create({
       data: {
         filename,

@@ -21,10 +21,7 @@ export const createPrompt = (fileContents: string, topics: string[]) => {
 };
 
 export class LLMService {
-  static async runAlgorithm(
-    fileContents: string,
-    topics: string[]
-  ): Promise<{ topics: string[]; relationships: string[][] } | null> {
+  static async runAlgorithm(fileContents: string, topics: string[]): Promise<{ topics: string[]; relationships: string[][] } | null> {
     const params: OpenAI.Chat.ChatCompletionCreateParams = {
       messages: [
         {
@@ -38,10 +35,8 @@ export class LLMService {
     };
 
     try {
-      const response: OpenAI.Chat.ChatCompletion =
-        await openai.chat.completions.create(params);
-      const messageContent: string | null =
-        response.choices[0].message.content?.trim() ?? '';
+      const response: OpenAI.Chat.ChatCompletion = await openai.chat.completions.create(params);
+      const messageContent: string | null = response.choices[0].message.content?.trim() ?? '';
       const output = JSON.parse(messageContent ?? '');
       return output;
     } catch (error) {

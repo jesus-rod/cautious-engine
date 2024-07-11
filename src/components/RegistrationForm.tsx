@@ -24,9 +24,7 @@ export const RegistrationForm: React.FC = () => {
         router.push('/signin');
       } else {
         const errorData = await response.json();
-        setServerError(
-          errorData.message || 'An error occurred during registration'
-        );
+        setServerError(errorData.message || 'An error occurred during registration');
       }
     } catch (error) {
       console.error('Error registering user:', error);
@@ -38,17 +36,10 @@ export const RegistrationForm: React.FC = () => {
     <div className="flex h-screen">
       <div className="w-1/2 flex items-center justify-center bg-white dark:bg-gray-800">
         <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-md p-8">
-          <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">
-            Register
-          </h2>
-          {serverError && (
-            <div className="mb-4 text-red-500">{serverError}</div>
-          )}
+          <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Register</h2>
+          {serverError && <div className="mb-4 text-red-500">{serverError}</div>}
           <div className="mb-4">
-            <label
-              htmlFor="name"
-              className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
-            >
+            <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
               Name
             </label>
             <input
@@ -57,17 +48,10 @@ export const RegistrationForm: React.FC = () => {
               id="name"
               className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
             />
-            {errors.name && (
-              <span className="text-red-500 text-xs mt-1">
-                {errors.name.message}
-              </span>
-            )}
+            {errors.name && <span className="text-red-500 text-xs mt-1">{errors.name.message}</span>}
           </div>
           <div className="mb-4">
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
-            >
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
               Email
             </label>
             <input
@@ -82,17 +66,10 @@ export const RegistrationForm: React.FC = () => {
               id="email"
               className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
             />
-            {errors.email && (
-              <span className="text-red-500 text-xs mt-1">
-                {errors.email.message}
-              </span>
-            )}
+            {errors.email && <span className="text-red-500 text-xs mt-1">{errors.email.message}</span>}
           </div>
           <div className="mb-6">
-            <label
-              htmlFor="password"
-              className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
-            >
+            <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
               Password
             </label>
             <input
@@ -107,11 +84,7 @@ export const RegistrationForm: React.FC = () => {
               id="password"
               className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
             />
-            {errors.password && (
-              <span className="text-red-500 text-xs mt-1">
-                {errors.password.message}
-              </span>
-            )}
+            {errors.password && <span className="text-red-500 text-xs mt-1">{errors.password.message}</span>}
           </div>
           <button
             type="submit"

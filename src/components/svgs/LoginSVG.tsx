@@ -1101,12 +1101,7 @@ const LoginSVG = () => (
     </g>
     <defs>
       <filter id="active" height="200%">
-        <feMorphology
-          in="SourceAlpha"
-          result="DILATED"
-          operator="dilate"
-          radius={2}
-        />
+        <feMorphology in="SourceAlpha" result="DILATED" operator="dilate" radius={2} />
         <feFlood floodColor="#32DFEC" floodOpacity={1} result="PINK" />
         <feComposite in="PINK" in2="DILATED" operator="in" result="OUTLINE" />
         <feMerge>
@@ -1115,12 +1110,7 @@ const LoginSVG = () => (
         </feMerge>
       </filter>
       <filter id="hover" height="200%">
-        <feMorphology
-          in="SourceAlpha"
-          result="DILATED"
-          operator="dilate"
-          radius={2}
-        />
+        <feMorphology in="SourceAlpha" result="DILATED" operator="dilate" radius={2} />
         <feFlood floodColor="#ff0000" floodOpacity={0.5} result="PINK" />
         <feComposite in="PINK" in2="DILATED" operator="in" result="OUTLINE" />
         <feMerge>

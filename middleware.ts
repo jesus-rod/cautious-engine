@@ -36,10 +36,7 @@ export default withAuth(
     // - default-src 'self': By default, only allow resources from the same origin
     // - script-src 'self' 'unsafe-inline' 'unsafe-eval': Allow scripts from same origin, and allow inline scripts and eval()
     // - style-src 'self' 'unsafe-inline': Allow styles from same origin and inline styles
-    res.headers.set(
-      'Content-Security-Policy',
-      "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline';"
-    );
+    res.headers.set('Content-Security-Policy', "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline';");
 
     // 2. HTTPS Redirect (for production)
     if (process.env.NODE_ENV === 'production' && !req.url.startsWith('https')) {

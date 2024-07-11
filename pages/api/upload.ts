@@ -46,19 +46,14 @@ const handleFileUpload = async (req: NextApiRequest, res: NextApiResponse) => {
     });
     await DatabaseHandler.saveFileMetadata(newFilename, firstFile.size);
 
-    res
-      .status(200)
-      .json({ message: 'File uploaded successfully', filename: newFilename });
+    res.status(200).json({ message: 'File uploaded successfully', filename: newFilename });
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'File upload or metadata saving failed' });
   }
 };
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     await handleFileUpload(req, res);
   } else {

@@ -37,10 +37,7 @@ export default function SiteNav() {
         <ul className="flex gap-x-5 text-[16px] font-bold">
           {/* Skeleton loader */}
           {[1, 2, 3].map((i) => (
-            <li
-              key={i}
-              className="w-20 h-8 bg-gray-200 dark:bg-gray-700 rounded animate-pulse"
-            ></li>
+            <li key={i} className="w-20 h-8 bg-gray-200 dark:bg-gray-700 rounded animate-pulse"></li>
           ))}
         </ul>
       </nav>
@@ -79,11 +76,7 @@ export default function SiteNav() {
             className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-zinc-600 dark:text-zinc-300"
             aria-label="Toggle theme"
           >
-            {theme === 'dark' ? (
-              <Sun className="h-5 w-5" />
-            ) : (
-              <Moon className="h-5 w-5" />
-            )}
+            {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
           </button>
         </li>
       </ul>

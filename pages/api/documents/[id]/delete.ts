@@ -24,10 +24,7 @@ const handlePostRequest = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-): Promise<void> {
+export default async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
   if (req.method === 'POST') {
     await handlePostRequest(req, res);
   } else {
