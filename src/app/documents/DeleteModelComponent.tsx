@@ -3,8 +3,8 @@
 import { useApiRequest } from '@/lib/useApiRequest';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import ConfirmationAlert from '../../components/ConfirmationAlert';
 import { deleteDocument } from '../functions';
-import ConfirmationAlert from './ConfirmationAlert';
 
 interface DeleteModelProps {
   id: string;

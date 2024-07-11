@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
 import { ThemeProvider } from 'next-themes';
 import { Plus_Jakarta_Sans } from 'next/font/google';
-import Container from './components/Container';
-import Footer from './components/Footer';
-import Header from './components/Header';
-import SessionWrapper from './components/SessionWrapper';
+import Container from '../components/Container';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
+import SessionWrapper from '../components/SessionWrapper';
 import './globals.css';
 
 const fontSas = Plus_Jakarta_Sans({

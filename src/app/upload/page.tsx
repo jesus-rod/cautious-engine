@@ -1,4 +1,4 @@
-import Upload from '../components/Upload';
+import Upload from './Upload';
 
 export default function UploadPage() {
   return (

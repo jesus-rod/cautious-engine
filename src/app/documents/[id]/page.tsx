@@ -1,4 +1,4 @@
-import GraphVisualization from '@/app/components/GraphVisualization';
+import GraphVisualization from '@/app/documents/[id]/GraphVisualization';
 import { fetchDocumentDetail } from '@/app/functions';
 import { DocumentData } from '@/app/types';
 import { notFound } from 'next/navigation';

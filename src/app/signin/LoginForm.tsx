@@ -2,10 +2,10 @@
 
 import { loginUser } from '@/app/functions';
 import { LoginData } from '@/app/types';
+import LoginSVG from '@/components/svgs/LoginSVG';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import LoginSVG from './svgs/LoginSVG';
 
 export const LoginForm: React.FC = () => {
   const {
