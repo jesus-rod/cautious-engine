@@ -5,6 +5,12 @@ import { File, Options } from 'formidable';
 import path from 'path';
 import { FileHandler } from '../FileHandler';
 
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
+
 const handleGetRequest = async (req: NextApiRequest, res: NextApiResponse) => {
   const page = parseInt(req.query.page as string) || 1;
   const limit = parseInt(req.query.limit as string) || PAGINATION_LIMIT;
@@ -19,12 +25,6 @@ const handleGetRequest = async (req: NextApiRequest, res: NextApiResponse) => {
     console.error(error);
     res.status(500).json({ message: 'Error retrieving files' });
   }
-};
-
-export const config = {
-  api: {
-    bodyParser: false,
-  },
 };
 
 const sanitizeFilename = (filename: string) => {
@@ -49,8 +49,8 @@ const handleFileUpload = async (req: NextApiRequest, res: NextApiResponse) => {
 
   try {
     const { files } = await FileHandler.parseForm(req, options);
-    const file = files.file as File[];
-    const firstFile = file[0];
+    const file = files.file as File | File[];
+    const firstFile = Array.isArray(file) ? file[0] : file;
 
     if (!firstFile.originalFilename) {
       return res.status(400).json({ message: 'No file uploaded' });
