@@ -39,7 +39,7 @@ export const uploadFile = async (file: File): Promise<Response> => {
 
 export const processDocument = async (id: string): Promise<Response> => {
   return await fetch(`api/documents/${id}/process`, {
-    method: 'POST',
+    method: 'PUT',
     body: JSON.stringify({ id }),
     headers: {
       'Content-Type': 'application/json',
@@ -48,8 +48,8 @@ export const processDocument = async (id: string): Promise<Response> => {
 };
 
 export const deleteDocument = async (id: string): Promise<Response> => {
-  return await fetch(`api/documents/${id}/delete`, {
-    method: 'POST',
+  return await fetch(`api/documents/${id}`, {
+    method: 'DELETE',
     body: JSON.stringify({ id }),
     headers: {
       'Content-Type': 'application/json',
