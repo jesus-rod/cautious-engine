@@ -1,30 +1,42 @@
-import type {Metadata} from "next";
-import {Inter} from "next/font/google";
-import Container from "./components/container";
-import Header from "./components/header";
-import "./globals.css";
+import type { Metadata } from 'next';
+import { ThemeProvider } from 'next-themes';
+import { Plus_Jakarta_Sans } from 'next/font/google';
+import Container from '../components/Container';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
+import SessionWrapper from '../components/SessionWrapper';
+import './globals.css';
 
-const inter = Inter({subsets: ["latin"]});
+const fontSas = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+});
 
 export const metadata: Metadata = {
-  title: "Topic Modeling",
-  description: "Using topic modeling to analyze text files",
+  title: 'Topicfy',
+  description: 'Model topics from text files securely in your browser.',
 };
 
 export default function RootLayout({
   children,
+  session,
 }: Readonly<{
   children: React.ReactNode;
+  session: any;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <Container>
-          <Header />
-          {children}
-        </Container>
+    <html suppressHydrationWarning={true} lang="en">
+      <body className={fontSas.className}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <SessionWrapper>
+            <Container>
+              <Header />
+              {children}
+              <Footer />
+            </Container>
+          </SessionWrapper>
+        </ThemeProvider>
       </body>
-
     </html>
   );
 }

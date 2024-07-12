@@ -1,6 +1,15 @@
-import DocumentsList from '../components/server/DocumentList';
+import DocumentsList from '@/app/documents/DocumentList';
+import { getServerSession } from 'next-auth/next';
+import { redirect } from 'next/navigation';
+import { authOptions } from '../../../pages/api/auth/[...nextauth]';
 
-const FileList = () => {
+const FileList = async () => {
+  const session = await getServerSession(authOptions);
+
+  if (!session) {
+    redirect('/api/auth/signin');
+  }
+
   return (
     <main className='flex min-h-screen flex-col justify-between p-"'>
       <div>
@@ -10,7 +19,6 @@ const FileList = () => {
         <DocumentsList />
       </div>
     </main>
-
   );
 };
 

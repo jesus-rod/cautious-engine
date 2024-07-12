@@ -3,6 +3,7 @@
 This project uses:
 
 - [NextJS](https://nextjs.org/) ~ React, Typescript, Tailwind
+- [NextAuth](https://next-auth.js.org/) - For Authentication
 - [Prisma](https://www.prisma.io/orm) as a ORM (Object-Relational Mapping)
   - Currently a SQLite database was chosen for demonstration simplicity but this could be easily changed to another provider under the file [schema.prisma](prisma/schema.prisma)
 - [openai-node](https://github.com/openai/openai-node) For interacting with chat GPT
@@ -21,7 +22,6 @@ OPENAI_API_KEY = "your-api-key-here"
 ```bash
 npm install
 ```
-
 
 3. Run the development server:
 
